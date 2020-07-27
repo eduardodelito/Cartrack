@@ -1,0 +1,2 @@
+include ':app', ':cartrack-ui', ':cartrack-common', ':cartrack-client', ':cartrack-db'
+rootProject.name = "Cartrack"

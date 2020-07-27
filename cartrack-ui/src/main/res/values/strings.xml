@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="cartrack_label">Cartrack Application</string>
+    <string name="create_account_label">Create Account</string>
+    <string name="login">Login</string>
+    <string name="first_name">First Name</string>
+    <string name="last_name">Last Name</string>
+    <string name="user_name">User Name</string>
+    <string name="password">Password</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="submit_button">Submit</string>
+
+    <string name="account_exist">Username %1$s already registered!</string>
+
+    <integer name="max_length">20</integer>
+</resources>
