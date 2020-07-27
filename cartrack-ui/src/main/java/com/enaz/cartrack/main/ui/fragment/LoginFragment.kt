@@ -30,6 +30,7 @@ class LoginFragment : BaseFragment<LoginFragmentBinding, LoginViewModel>() {
         BR.loginViewModel
 
     override fun initViews() {
+        listener?.showDetails(false)
         login_button.setOnClickListener {
             viewModel.onLogin(editText_username.text.toString(), editText_password.text.toString())
         }
@@ -96,6 +97,8 @@ class LoginFragment : BaseFragment<LoginFragmentBinding, LoginViewModel>() {
         fun onLogin(view: View)
 
         fun onCreateAccount(view: View)
+
+        fun showDetails(isVisible: Boolean)
     }
 
     companion object {

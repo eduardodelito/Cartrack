@@ -41,4 +41,15 @@ class MainActivity : DaggerAppCompatActivity(), LoginFragment.OnLoginFragmentLis
 //            detailsFragment.updateDetails(movieItem)
         }
     }
+
+    override fun showDetails(isVisible: Boolean) {
+        val detailsFragment: DetailsFragment? =
+            supportFragmentManager.findFragmentById(R.id.detailsFragment) as DetailsFragment?
+        if (detailsFragment != null) {
+            if (isVisible)
+                detailsFragment?.view?.visibility = View.VISIBLE
+            else
+                detailsFragment?.view?.visibility = View.GONE
+        }
+    }
 }

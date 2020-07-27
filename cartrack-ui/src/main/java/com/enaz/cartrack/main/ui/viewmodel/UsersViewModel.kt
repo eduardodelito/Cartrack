@@ -61,7 +61,7 @@ class UsersViewModel @Inject constructor(private var cartrackRepository: Cartrac
      * Refresh movie list from the lat search.
      */
     fun refresh() {
-
+        loadUsers()
     }
 
 }

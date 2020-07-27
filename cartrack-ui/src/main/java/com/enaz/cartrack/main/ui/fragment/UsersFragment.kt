@@ -36,6 +36,7 @@ class UsersFragment : BaseFragment<UsersFragmentBinding, UsersViewModel>(),
     override fun getBindingVariable() = BR.usersViewModel
 
     override fun initViews() {
+        listener?.showDetails(true)
         usersAdapter = UsersAdapter(object : UsersAdapter.OnUsersAdapterListener {
             /**
              * onClick method to display details for mobile/tablet.
@@ -102,6 +103,8 @@ class UsersFragment : BaseFragment<UsersFragmentBinding, UsersViewModel>(),
 
     interface OnUsersFragment {
         fun navigateToDetails(view: View, usersResponse: UsersResponse)
+
+        fun showDetails(isVisible: Boolean)
     }
 
     companion object {

@@ -24,6 +24,7 @@ class CreateAccountFragment : BaseFragment<CreateAccountFragmentBinding, CreateA
     override fun getBindingVariable() = BR.createAccountViewModel
 
     override fun initViews() {
+        listener?.showDetails(false)
         submit_button.setOnClickListener {
             viewModel.submit(
                 first_name_field.text.toString(), last_name_field.text.toString(),
@@ -101,6 +102,8 @@ class CreateAccountFragment : BaseFragment<CreateAccountFragmentBinding, CreateA
 
     interface OnCreateAccountFragment {
         fun submit(view: View)
+
+        fun showDetails(isVisible: Boolean)
     }
 
     companion object {
