@@ -5,3 +5,5 @@ package com.enaz.cartrack.main.ui.model
  */
 sealed class LoginViewState
 class LoginValidModel(var isValid: Boolean) : LoginViewState()
+class LoginSuccessModel(var isSuccess: Boolean) : LoginViewState()
+class ErrorModel(val message: Int) : LoginViewState()

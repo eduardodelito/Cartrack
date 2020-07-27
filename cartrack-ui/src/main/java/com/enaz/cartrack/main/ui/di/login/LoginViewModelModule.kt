@@ -17,8 +17,8 @@ class LoginViewModelModule {
     @Provides
     @IntoMap
     @ViewModelKey(LoginViewModel::class)
-    fun provideLoginViewModel(): ViewModel =
-        LoginViewModel()
+    fun provideLoginViewModel(cartrackRepository: CartrackRepository): ViewModel =
+        LoginViewModel(cartrackRepository)
 
     @Provides
     @IntoMap

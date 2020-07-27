@@ -55,6 +55,20 @@
             app:layout_constraintTop_toBottomOf="@+id/editText_username" />
 
         <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/login_error_message"
+            style="@style/AvenirMedium.Red"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/padding16"
+            android:layout_marginTop="@dimen/margin20"
+            android:layout_marginEnd="@dimen/padding16"
+            android:gravity="center_horizontal|center_vertical"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editText_password" />
+
+        <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/login_button"
             style="@style/AvenirMedium"
             android:layout_width="match_parent"

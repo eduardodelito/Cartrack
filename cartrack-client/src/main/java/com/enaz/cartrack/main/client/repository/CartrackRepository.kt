@@ -12,18 +12,25 @@ interface CartrackRepository {
 
     fun isUserExist(userName: String): Boolean
 
+    fun isUsernamePasswordValid(userName: String, password: String): Boolean
+
     fun deleteAccount();
 
     fun getUsers()
 }
 
-class CartrackRepositoryImpl(private var cartrackApiClient: CartrackApiClient,
-                             private var accountDao: AccountDao) : CartrackRepository {
+class CartrackRepositoryImpl(
+    private var cartrackApiClient: CartrackApiClient,
+    private var accountDao: AccountDao
+) : CartrackRepository {
     override fun submit(account: AccountEntity) {
         accountDao.insertAccount(account)
     }
 
     override fun isUserExist(userName: String) = accountDao.isUserExist(userName)
+
+    override fun isUsernamePasswordValid(userName: String, password: String) =
+        accountDao.isUsenamePasswordValid(userName, password)
 
     override fun deleteAccount() {
         accountDao.deleteAccount()

@@ -11,6 +11,7 @@
     <string name="submit_button">Submit</string>
 
     <string name="account_exist">Username %1$s already registered!</string>
+    <string name="invalid">Invalid username or password, please try again or create account if not yet registered.</string>
 
     <integer name="max_length">20</integer>
 </resources>
