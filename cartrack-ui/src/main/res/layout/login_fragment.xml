@@ -13,7 +13,8 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="@dimen/padding16">
+        android:padding="@dimen/padding16"
+        android:background="@color/item_highlight_default">
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/cart_track_label"

@@ -1,10 +1,12 @@
 package com.enaz.cartrack.main.db.dao
 
+import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import com.enaz.cartrack.main.db.entity.AccountEntity
+import com.enaz.cartrack.main.db.entity.UsersEntity
 
 /**
  * Created by eduardo.delito on 7/26/20.

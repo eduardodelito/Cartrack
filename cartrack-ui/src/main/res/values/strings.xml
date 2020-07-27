@@ -15,4 +15,6 @@
     <string name="invalid">Invalid username or password, please try again or create account if not yet registered.</string>
     <string name="invalid_password">Invalid password.</string>
     <integer name="max_length">20</integer>
+
+    <string name="no_available_search">Please try to search users.</string>
 </resources>

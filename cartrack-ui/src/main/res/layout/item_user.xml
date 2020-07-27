@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+    <data>
+        <variable
+            name="usersResponse"
+            type="com.enaz.cartrack.main.client.UsersResponse" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/item_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/user_name"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            style="@style/Font.Small.PrimaryDark.Bold"
+            android:text="@{usersResponse.name}"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

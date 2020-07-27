@@ -23,4 +23,20 @@
         <item name="android:textColor">@color/colorPrimaryDark</item>
         <item name="android:textSize">@dimen/font30</item>
     </style>
+
+    <style name="Font.Small.PrimaryDark.Bold" parent="@android:style/TextAppearance.Small">
+        <item name="android:fontFamily">@font/avenir_medium</item>
+        <item name="android:textColor">@color/colorPrimaryDark</item>
+    </style>
+
+    <style name="Font.Small.DarkGray" parent="@android:style/TextAppearance.Small">
+        <item name="android:fontFamily">@font/avenir_medium</item>
+        <item name="android:textColor">@color/dark_gray</item>
+    </style>
+
+    <style name="Font.Small.Red.Bold" parent="@android:style/TextAppearance.Small">
+        <item name="android:fontFamily">@font/avenir_medium</item>
+        <item name="android:textColor">@color/red</item>
+        <item name="android:textStyle">bold</item>
+    </style>
 </resources>

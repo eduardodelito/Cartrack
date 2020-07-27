@@ -4,6 +4,7 @@ import android.app.Application
 import androidx.room.Room
 import com.enaz.cartrack.main.db.CartrackDB
 import com.enaz.cartrack.main.db.dao.AccountDao
+import com.enaz.cartrack.main.db.dao.UsersDao
 import dagger.Module
 import dagger.Provides
 import javax.inject.Singleton
@@ -39,5 +40,11 @@ class DBModule(private var application: Application) {
     @Provides
     fun providesAccountDao(cartrackDB: CartrackDB): AccountDao {
         return cartrackDB.accountDao()
+    }
+
+    @Singleton
+    @Provides
+    fun providesUsersDao(cartrackDB: CartrackDB): UsersDao {
+        return cartrackDB.usersDao()
     }
 }

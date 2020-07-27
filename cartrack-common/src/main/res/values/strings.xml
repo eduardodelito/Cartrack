@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="no_search_found">No search result for \"%1$s\".</string>
+    <string name="recent_search">Recent search result for \"%1$s\".</string>
+    <string name="common_no_internet_connection">Weak or No Internet Connection.</string>
+    <string name="error_banner_dismiss_button">Dismiss Alert</string>
+    <string name="error_banner_retry_button">Retry</string>
+</resources>

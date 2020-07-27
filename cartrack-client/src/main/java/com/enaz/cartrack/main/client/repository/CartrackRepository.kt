@@ -1,8 +1,12 @@
 package com.enaz.cartrack.main.client.repository
 
+import androidx.lifecycle.LiveData
+import com.enaz.cartrack.main.CartrackApiService
 import com.enaz.cartrack.main.client.CartrackApiClient
 import com.enaz.cartrack.main.db.dao.AccountDao
+import com.enaz.cartrack.main.db.dao.UsersDao
 import com.enaz.cartrack.main.db.entity.AccountEntity
+import com.enaz.cartrack.main.db.entity.UsersEntity
 
 /**
  * Created by eduardo.delito on 7/26/20.
@@ -16,12 +20,17 @@ interface CartrackRepository {
 
     fun deleteAccount();
 
-    fun getUsers()
+    fun getUsersResponse(): CartrackApiService
+
+    fun insertUsers(users: List<UsersEntity>)
+
+    fun getUsers(): LiveData<List<UsersEntity>>
 }
 
 class CartrackRepositoryImpl(
     private var cartrackApiClient: CartrackApiClient,
-    private var accountDao: AccountDao
+    private var accountDao: AccountDao,
+    private var usersDao: UsersDao
 ) : CartrackRepository {
     override fun submit(account: AccountEntity) {
         accountDao.insertAccount(account)
@@ -36,7 +45,12 @@ class CartrackRepositoryImpl(
         accountDao.deleteAccount()
     }
 
-    override fun getUsers() {
+    override fun getUsersResponse() = cartrackApiClient.getCartrackResponse()
 
+    override fun insertUsers(users: List<UsersEntity>) {
+        usersDao.deleteUsers()
+        usersDao.insertUsers(users)
     }
+
+    override fun getUsers() = usersDao.getUsers()
 }

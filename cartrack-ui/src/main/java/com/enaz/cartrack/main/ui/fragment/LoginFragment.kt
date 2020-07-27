@@ -3,6 +3,7 @@ package com.enaz.cartrack.main.ui.fragment
 import android.content.Context
 import android.view.View
 import com.enaz.cartrack.main.common.fragment.BaseFragment
+import com.enaz.cartrack.main.common.util.hideKeyboard
 import com.enaz.cartrack.main.common.util.reObserve
 import com.enaz.cartrack.main.common.util.setViewVisibility
 import com.enaz.cartrack.main.ui.fragment.databinding.LoginFragmentBinding
@@ -63,6 +64,7 @@ class LoginFragment : BaseFragment<LoginFragmentBinding, LoginViewModel>() {
 
             is LoginSuccessModel -> {
                 if (state.isSuccess) {
+                    hideKeyboard()
                     view?.let { listener?.onLogin(it) }
                     clearFields()
                 }

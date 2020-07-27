@@ -6,4 +6,14 @@
     <color name="disabledColorPrimary">#5931B2</color>
     <color name="dialog_bg">#804C4948</color>
     <color name="red">#E91121</color>
+    <color name="dark_gray">#646363</color>
+
+    <!-- Error Banner -->
+    <color name="banner_orange">#ff4606</color>
+    <color name="banner_dark_blue">#FF243A55</color>
+    <color name="banner_active_blue">#FF1994D7</color>
+    <color name="banner_green">#FF61941B</color>
+    <color name="item_highlight">#FCFCD0</color>
+    <color name="item_highlight_default">#E4E5FA</color>
+    <color name="background">#C9F6FD</color>
 </resources>

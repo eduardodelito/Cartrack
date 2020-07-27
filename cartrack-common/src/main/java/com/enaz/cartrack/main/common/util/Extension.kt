@@ -1,7 +1,11 @@
 package com.enaz.cartrack.main.common.util
 
+import android.app.Activity
+import android.content.Context
 import android.view.View
+import android.view.inputmethod.InputMethodManager
 import androidx.appcompat.widget.AppCompatTextView
+import androidx.fragment.app.Fragment
 
 /**
  * Created by eduardo.delito on 7/26/20.
@@ -23,4 +27,17 @@ fun AppCompatTextView.setViewVisibility(message: String?) {
             View.VISIBLE
         } ?: View.GONE
     }
+}
+
+fun Fragment.hideKeyboard() {
+    view?.let { activity?.hideKeyboard(it) }
+}
+
+fun Activity.hideKeyboard() {
+    hideKeyboard(currentFocus ?: View(this))
+}
+
+fun Context.hideKeyboard(view: View) {
+    val inputMethodManager = getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
+    inputMethodManager.hideSoftInputFromWindow(view.windowToken, 0)
 }

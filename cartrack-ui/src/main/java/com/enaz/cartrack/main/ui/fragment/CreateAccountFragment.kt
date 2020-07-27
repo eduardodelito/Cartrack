@@ -3,6 +3,7 @@ package com.enaz.cartrack.main.ui.fragment
 import android.content.Context
 import android.view.View
 import com.enaz.cartrack.main.common.fragment.BaseFragment
+import com.enaz.cartrack.main.common.util.hideKeyboard
 import com.enaz.cartrack.main.common.util.reObserve
 import com.enaz.cartrack.main.common.util.setViewVisibility
 import com.enaz.cartrack.main.ui.fragment.databinding.CreateAccountFragmentBinding
@@ -41,7 +42,10 @@ class CreateAccountFragment : BaseFragment<CreateAccountFragmentBinding, CreateA
         when (state) {
             is LoadingModel -> {
                 loading_layout.setViewVisibility(state.isLoading)
-                if (!state.isLoading) view?.let { listener?.submit(it) }
+                if (!state.isLoading) {
+                    hideKeyboard()
+                    view?.let { listener?.submit(it) }
+                }
             }
             is FailingModel -> {
                 if (state.isFailing)

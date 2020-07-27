@@ -4,6 +4,7 @@ import com.enaz.cartrack.main.client.CartrackApiClient
 import com.enaz.cartrack.main.client.repository.CartrackRepository
 import com.enaz.cartrack.main.client.repository.CartrackRepositoryImpl
 import com.enaz.cartrack.main.db.dao.AccountDao
+import com.enaz.cartrack.main.db.dao.UsersDao
 import dagger.Module
 import dagger.Provides
 import okhttp3.OkHttpClient
@@ -31,6 +32,6 @@ class ClientModule {
     @Singleton
     fun provideCartrackRepository(
         cartrackApiClient: CartrackApiClient,
-        accountDao: AccountDao): CartrackRepository =
-        CartrackRepositoryImpl(cartrackApiClient, accountDao)
+        accountDao: AccountDao, usersDao: UsersDao): CartrackRepository =
+        CartrackRepositoryImpl(cartrackApiClient, accountDao, usersDao)
 }

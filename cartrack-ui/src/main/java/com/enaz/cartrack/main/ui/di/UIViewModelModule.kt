@@ -30,6 +30,6 @@ class UIViewModelModule {
     @Provides
     @IntoMap
     @ViewModelKey(UsersViewModel::class)
-    fun provideUsersViewModel(): ViewModel =
-        UsersViewModel()
+    fun provideUsersViewModel(cartrackRepository: CartrackRepository): ViewModel =
+        UsersViewModel(cartrackRepository)
 }
