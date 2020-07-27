@@ -42,11 +42,11 @@ class LoginFragment : BaseFragment<LoginFragmentBinding, LoginViewModel>() {
 
     override fun subscribeUi() {
         with(viewModel) {
-            reObserve(getLoginLiveData(), ::onLoginStateChange)
+            reObserve(getLoginLiveData(), ::onLoginStateChanged)
         }
     }
 
-    private fun onLoginStateChange(state: LoginViewState?) {
+    private fun onLoginStateChanged(state: LoginViewState?) {
         when (state) {
             is LoginValidModel -> {
                 login_button.isEnabled = state.isValid

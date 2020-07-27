@@ -38,7 +38,7 @@ class MainActivity : DaggerAppCompatActivity(), LoginFragment.OnLoginFragmentLis
             val action = UsersFragmentDirections.actionUsersFragmentToDetailsFragment()
             view.findNavController().navigate(action.actionId, bundle)
         } else {
-//            detailsFragment.updateDetails(movieItem)
+            detailsFragment.updateDetails(usersResponse)
         }
     }
 
@@ -51,5 +51,9 @@ class MainActivity : DaggerAppCompatActivity(), LoginFragment.OnLoginFragmentLis
             else
                 detailsFragment?.view?.visibility = View.GONE
         }
+    }
+
+    override fun loadFirstIndex(userItem: UsersResponse?) {
+        (supportFragmentManager.findFragmentById(R.id.detailsFragment) as DetailsFragment?)?.updateDetails(userItem)
     }
 }

@@ -7,6 +7,7 @@
     <color name="dialog_bg">#804C4948</color>
     <color name="red">#E91121</color>
     <color name="dark_gray">#646363</color>
+    <color name="item_background">#DEF5F3</color>
 
     <!-- Error Banner -->
     <color name="banner_orange">#ff4606</color>

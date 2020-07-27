@@ -3,7 +3,7 @@ package com.enaz.cartrack.main.ui.di
 import androidx.lifecycle.ViewModel
 import com.enaz.cartrack.main.client.repository.CartrackRepository
 import com.enaz.cartrack.main.common.viewmodel.ViewModelKey
-import com.enaz.cartrack.main.ui.fragment.DetailsViewModel
+import com.enaz.cartrack.main.ui.viewmodel.DetailsViewModel
 import com.enaz.cartrack.main.ui.viewmodel.CreateAccountViewModel
 import com.enaz.cartrack.main.ui.viewmodel.LoginViewModel
 import com.enaz.cartrack.main.ui.viewmodel.UsersViewModel

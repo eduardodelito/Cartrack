@@ -47,17 +47,6 @@ class UsersViewModel @Inject constructor(private var cartrackRepository: Cartrac
     }
 
     /**
-     * Search movies based on the query string value.
-     * @param query string to search.
-     */
-    fun onQueryTextSubmit(query: String?): Boolean {
-        query?.let {
-            //search Users
-        }
-        return false
-    }
-
-    /**
      * Refresh movie list from the lat search.
      */
     fun refresh() {

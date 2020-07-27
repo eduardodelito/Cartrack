@@ -1,15 +1,216 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
     <data>
+
         <variable
             name="detailsViewModel"
-            type="com.enaz.cartrack.main.ui.fragment.DetailsViewModel" />
+            type="com.enaz.cartrack.main.ui.viewmodel.DetailsViewModel" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/item_highlight_default">
+        android:background="@color/item_highlight_default"
+        android:paddingLeft="@dimen/padding16"
+        android:paddingTop="@dimen/margin16"
+        android:paddingRight="@dimen/padding16"
+        android:scrollbars="none">
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin5">
+
+            <LinearLayout
+                android:id="@+id/details_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/background"
+                android:gravity="left"
+                android:orientation="vertical"
+                android:padding="@dimen/padding16">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/details_name"
+                    style="@style/AvenirHeavy.Black"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{@string/item_name(detailsViewModel.user.name)}"
+                    android:textSize="@dimen/font25" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/details_user_name"
+                    style="@style/AvenirHeavy.Black"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin5"
+                    android:text="@{@string/item_username(detailsViewModel.user.username)}"
+                    android:textSize="@dimen/font25" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="@dimen/margin10"
+                    android:layout_marginBottom="@dimen/margin10"
+                    android:background="@color/colorPrimary" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/details_email"
+                    style="@style/AvenirMedium.Black"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin5"
+                    android:autoLink="all"
+                    android:drawableLeft="@drawable/ic_baseline_email_24"
+                    android:drawablePadding="@dimen/margin10"
+                    android:inputType="textEmailAddress"
+                    android:text="@{@string/item_email(detailsViewModel.user.email)}" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="@dimen/margin10"
+                    android:layout_marginBottom="@dimen/margin10"
+                    android:background="@color/colorPrimary" />
+
+                <LinearLayout
+                    android:id="@+id/details_address_layout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="left"
+                    android:orientation="vertical">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/address_label"
+                        style="@style/AvenirHeavy.Black"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin5"
+                        android:text="@string/details_address_label" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/address_street"
+                        style="@style/AvenirMedium.Black"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin5"
+                        android:text="@{@string/details_address_street(detailsViewModel.user.address.street)}" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/address_suite"
+                        style="@style/AvenirMedium.Black"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin5"
+                        android:text="@{@string/details_address_suite(detailsViewModel.user.address.suite)}" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/address_city"
+                        style="@style/AvenirMedium.Black"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin5"
+                        android:text="@{@string/details_address_city(detailsViewModel.user.address.city)}" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/address_zip_code"
+                        style="@style/AvenirMedium.Black"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin5"
+                        android:text="@{@string/details_address_street(detailsViewModel.user.address.zipcode)}" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/address_location"
+                        style="@style/AvenirHeavy.Black"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin5"
+                        android:drawableRight="@drawable/ic_baseline_location_on_24"
+                        android:drawablePadding="@dimen/margin10"
+                        android:text="@string/details_address_location_label" />
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="@dimen/margin10"
+                    android:layout_marginBottom="@dimen/margin10"
+                    android:background="@color/colorPrimary" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/details_phone"
+                    style="@style/AvenirMedium.Black"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin5"
+                    android:autoLink="all"
+                    android:drawableLeft="@drawable/ic_baseline_contact_phone_24"
+                    android:drawablePadding="@dimen/margin10"
+                    android:inputType="phone"
+                    android:text="@{@string/item_phone(detailsViewModel.user.phone)}" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/details_website"
+                    style="@style/AvenirMedium.Black"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin5"
+                    android:autoLink="all"
+                    android:drawableLeft="@drawable/ic_baseline_web_24"
+                    android:drawablePadding="@dimen/margin10"
+                    android:text="@{@string/item_website(detailsViewModel.user.website)}" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="@dimen/margin10"
+                    android:layout_marginBottom="@dimen/margin10"
+                    android:background="@color/colorPrimary" />
+
+                <LinearLayout
+                    android:id="@+id/details_company_layout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="left"
+                    android:orientation="vertical">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/company_label"
+                        style="@style/AvenirHeavy.Black"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/details_company_label" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/company_name"
+                        style="@style/AvenirMedium.Black"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin5"
+                        android:text="@{@string/details_company_name(detailsViewModel.user.company.name)}" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/company_catch_phrase"
+                        style="@style/AvenirMedium.Black"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin5"
+                        android:text="@{detailsViewModel.user.company.catchPhrase}" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/company_bs"
+                        style="@style/AvenirMedium.Black"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin5"
+                        android:text="@{detailsViewModel.user.company.bs}" />
+
+                </LinearLayout>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+    </ScrollView>
 </layout>

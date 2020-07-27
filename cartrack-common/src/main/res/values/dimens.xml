@@ -20,5 +20,7 @@
 
     <!--Font Size-->
     <dimen name="font18">18sp</dimen>
+    <dimen name="font20">20sp</dimen>
+    <dimen name="font25">25sp</dimen>
     <dimen name="font30">30sp</dimen>
 </resources>

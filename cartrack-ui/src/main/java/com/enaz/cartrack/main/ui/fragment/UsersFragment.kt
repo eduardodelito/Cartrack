@@ -3,7 +3,6 @@ package com.enaz.cartrack.main.ui.fragment
 import android.content.Context
 import android.graphics.Canvas
 import android.view.View
-import androidx.appcompat.widget.SearchView
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -21,8 +20,7 @@ import kotlinx.android.synthetic.main.users_fragment.*
 import javax.inject.Inject
 
 
-class UsersFragment : BaseFragment<UsersFragmentBinding, UsersViewModel>(),
-    SearchView.OnQueryTextListener{
+class UsersFragment : BaseFragment<UsersFragmentBinding, UsersViewModel>(){
 
     @Inject
     override lateinit var viewModel: UsersViewModel
@@ -59,8 +57,6 @@ class UsersFragment : BaseFragment<UsersFragmentBinding, UsersViewModel>(),
             adapter = usersAdapter
         }
 
-        search_view.setOnQueryTextListener(this)
-
         swipe_to_refresh_view.setOnRefreshListener {
             viewModel.refresh()
         }
@@ -76,7 +72,12 @@ class UsersFragment : BaseFragment<UsersFragmentBinding, UsersViewModel>(),
     }
 
     private fun onUsersLoaded(list: List<UsersEntity>?) {
-        list?.entityModelToUsersResponse()?.let { usersAdapter.updateData(it) }
+        list?.entityModelToUsersResponse()?.let {
+            if (!it.isNullOrEmpty()) {
+                usersAdapter.updateData(it)
+                listener?.loadFirstIndex(it[0])
+            }
+        }
     }
 
     private fun onUsersStateChanged(state: UsersViewState?) {
@@ -84,10 +85,6 @@ class UsersFragment : BaseFragment<UsersFragmentBinding, UsersViewModel>(),
             is UsersLoading -> swipe_to_refresh_view.isRefreshing = state.isLoading
         }
     }
-
-    override fun onQueryTextSubmit(query: String?) = viewModel.onQueryTextSubmit(query)
-
-    override fun onQueryTextChange(newText: String?) = false
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -105,6 +102,12 @@ class UsersFragment : BaseFragment<UsersFragmentBinding, UsersViewModel>(),
         fun navigateToDetails(view: View, usersResponse: UsersResponse)
 
         fun showDetails(isVisible: Boolean)
+
+        /**
+         * Display first index as default details.
+         * @param userItem data to display details.
+         */
+        fun loadFirstIndex(userItem: UsersResponse?)
     }
 
     companion object {

@@ -20,4 +20,17 @@
 
     <string name="item_name">Name : %1$s</string>
     <string name="item_username">Username : %1$s</string>
+    <string name="item_email">Email : %1$s</string>
+    <string name="item_phone">Phone : %1$s</string>
+    <string name="item_website">Website : %1$s</string>
+
+    <string name="details_address_label">Address</string>
+    <string name="details_address_street">Street : %1$s</string>
+    <string name="details_address_suite">Suite : %1$s</string>
+    <string name="details_address_city">City : %1$s</string>
+    <string name="details_address_zip_code">Zip Code : %1$s</string>
+    <string name="details_address_location_label">Location</string>
+
+    <string name="details_company_label">Company</string>
+    <string name="details_company_name">Name : %1$s</string>
 </resources>

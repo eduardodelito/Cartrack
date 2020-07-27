@@ -15,47 +15,42 @@
         android:layout_margin="@dimen/margin5"
         app:cardCornerRadius="@dimen/margin20">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <LinearLayout
             android:id="@+id/itemLayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/background"
+            android:background="@color/item_background"
+            android:gravity="left"
+            android:orientation="vertical"
             android:padding="@dimen/padding16">
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/item_name"
-                style="@style/AvenirMedium.Black"
-                android:layout_width="match_parent"
+                style="@style/AvenirHeavy.Black"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@{@string/item_name(usersResponse.name)}"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                android:text="@{@string/item_name(usersResponse.name)}" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/item_user_name"
-                style="@style/AvenirMedium.Black"
-                android:layout_width="match_parent"
+                style="@style/AvenirHeavy.Black"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/margin5"
-                android:text="@{@string/item_username(usersResponse.username)}"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/item_name" />
+                android:text="@{@string/item_username(usersResponse.username)}" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/item_phone"
                 style="@style/AvenirMedium.Black"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/margin5"
+                android:autoLink="all"
                 android:drawableLeft="@drawable/ic_baseline_contact_phone_24"
                 android:drawablePadding="@dimen/margin10"
-                android:text="@{usersResponse.phone}"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/item_user_name" />
+                android:inputType="phone"
+                android:text="@{usersResponse.phone}" />
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+        </LinearLayout>
     </androidx.cardview.widget.CardView>
 </layout>
