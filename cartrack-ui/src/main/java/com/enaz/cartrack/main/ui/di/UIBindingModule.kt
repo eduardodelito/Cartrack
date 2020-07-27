@@ -1,9 +1,7 @@
 package com.enaz.cartrack.main.ui.di
 
 import androidx.lifecycle.ViewModelProvider
-import com.enaz.cartrack.main.ui.fragment.CreateAccountFragment
-import com.enaz.cartrack.main.ui.fragment.LoginFragment
-import com.enaz.cartrack.main.ui.fragment.UsersFragment
+import com.enaz.cartrack.main.ui.fragment.*
 import com.enaz.cartrack.main.ui.viewmodel.CreateAccountViewModel
 import com.enaz.cartrack.main.ui.viewmodel.LoginViewModel
 import com.enaz.cartrack.main.ui.viewmodel.UsersViewModel
@@ -50,5 +48,17 @@ abstract class UIBindingModule {
             factory: ViewModelProvider.Factory,
             target: UsersFragment
         ) = ViewModelProvider(target, factory).get(UsersViewModel::class.java)
+    }
+
+    @ContributesAndroidInjector(modules = [InjectDetailsModelModule::class])
+    abstract fun bindDetailsFragment(): DetailsFragment
+
+    @Module
+    class InjectDetailsModelModule {
+        @Provides
+        internal fun provideDetailsViewModel(
+            factory: ViewModelProvider.Factory,
+            target: DetailsFragment
+        ) = ViewModelProvider(target, factory).get(DetailsViewModel::class.java)
     }
 }

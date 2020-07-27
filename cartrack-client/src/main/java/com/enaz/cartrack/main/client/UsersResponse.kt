@@ -2,6 +2,7 @@ package com.enaz.cartrack.main.client
 
 import com.enaz.cartrack.main.db.entity.Address
 import com.enaz.cartrack.main.db.entity.Company
+import java.io.Serializable
 
 /**
  * Created by eduardo.delito on 7/27/20.
@@ -15,4 +16,4 @@ data class UsersResponse(
     var phone: String,
     var website: String,
     var company: Company
-)
+): Serializable

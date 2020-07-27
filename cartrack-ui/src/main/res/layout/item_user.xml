@@ -1,21 +1,61 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
     <data>
+
         <variable
             name="usersResponse"
             type="com.enaz.cartrack.main.client.UsersResponse" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/item_layout"
+    <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin5"
+        app:cardCornerRadius="@dimen/margin20">
 
-        <TextView
-            android:id="@+id/user_name"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/itemLayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            style="@style/Font.Small.PrimaryDark.Bold"
-            android:text="@{usersResponse.name}"/>
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            android:background="@color/background"
+            android:padding="@dimen/padding16">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/item_name"
+                style="@style/AvenirMedium.Black"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@{@string/item_name(usersResponse.name)}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/item_user_name"
+                style="@style/AvenirMedium.Black"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin5"
+                android:text="@{@string/item_username(usersResponse.username)}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/item_name" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/item_phone"
+                style="@style/AvenirMedium.Black"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin5"
+                android:drawableLeft="@drawable/ic_baseline_contact_phone_24"
+                android:drawablePadding="@dimen/margin10"
+                android:text="@{usersResponse.phone}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/item_user_name" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
 </layout>

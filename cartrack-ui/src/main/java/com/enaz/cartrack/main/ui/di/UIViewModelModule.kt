@@ -3,6 +3,7 @@ package com.enaz.cartrack.main.ui.di
 import androidx.lifecycle.ViewModel
 import com.enaz.cartrack.main.client.repository.CartrackRepository
 import com.enaz.cartrack.main.common.viewmodel.ViewModelKey
+import com.enaz.cartrack.main.ui.fragment.DetailsViewModel
 import com.enaz.cartrack.main.ui.viewmodel.CreateAccountViewModel
 import com.enaz.cartrack.main.ui.viewmodel.LoginViewModel
 import com.enaz.cartrack.main.ui.viewmodel.UsersViewModel
@@ -32,4 +33,10 @@ class UIViewModelModule {
     @ViewModelKey(UsersViewModel::class)
     fun provideUsersViewModel(cartrackRepository: CartrackRepository): ViewModel =
         UsersViewModel(cartrackRepository)
+
+    @Provides
+    @IntoMap
+    @ViewModelKey(DetailsViewModel::class)
+    fun provideDetailsViewModel(): ViewModel =
+        DetailsViewModel()
 }

@@ -17,4 +17,7 @@
     <integer name="max_length">20</integer>
 
     <string name="no_available_search">Please try to search users.</string>
+
+    <string name="item_name">Name : %1$s</string>
+    <string name="item_username">Username : %1$s</string>
 </resources>

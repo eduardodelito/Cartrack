@@ -1,9 +1,12 @@
 package com.enaz.cartrack.main.ui.fragment
 
+import android.content.Context
+import android.graphics.Canvas
 import android.view.View
 import androidx.appcompat.widget.SearchView
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.enaz.cartrack.main.client.UsersResponse
 import com.enaz.cartrack.main.common.fragment.BaseFragment
 import com.enaz.cartrack.main.common.util.reObserve
@@ -17,11 +20,14 @@ import com.enaz.cartrack.main.ui.viewmodel.UsersViewModel
 import kotlinx.android.synthetic.main.users_fragment.*
 import javax.inject.Inject
 
+
 class UsersFragment : BaseFragment<UsersFragmentBinding, UsersViewModel>(),
     SearchView.OnQueryTextListener{
 
     @Inject
     override lateinit var viewModel: UsersViewModel
+
+    private var listener: OnUsersFragment? = null
 
     private lateinit var usersAdapter: UsersAdapter
 
@@ -37,18 +43,18 @@ class UsersFragment : BaseFragment<UsersFragmentBinding, UsersViewModel>(),
              * @param usersResponse data to display details.
              */
             override fun onUserSelected(view: View, usersResponse: UsersResponse) {
-
+                listener?.navigateToDetails(view, usersResponse)
             }
         })
 
         with(recycler_view) {
             layoutManager = LinearLayoutManager(context)
-            addItemDecoration(
-                DividerItemDecoration(
-                    context,
-                    (layoutManager as LinearLayoutManager).orientation
-                )
-            )
+            addItemDecoration(object :
+                DividerItemDecoration(context, LinearLayoutManager.VERTICAL) {
+                override fun onDraw(c: Canvas, parent: RecyclerView, state: RecyclerView.State) {
+                    // Do not draw divider line
+                }
+            })
             adapter = usersAdapter
         }
 
@@ -81,6 +87,22 @@ class UsersFragment : BaseFragment<UsersFragmentBinding, UsersViewModel>(),
     override fun onQueryTextSubmit(query: String?) = viewModel.onQueryTextSubmit(query)
 
     override fun onQueryTextChange(newText: String?) = false
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        if (context is OnUsersFragment) {
+            listener = context
+        }
+    }
+
+    override fun onDetach() {
+        super.onDetach()
+        listener = null
+    }
+
+    interface OnUsersFragment {
+        fun navigateToDetails(view: View, usersResponse: UsersResponse)
+    }
 
     companion object {
         fun newInstance() = UsersFragment()
