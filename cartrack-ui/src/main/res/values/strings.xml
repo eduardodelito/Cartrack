@@ -8,10 +8,11 @@
     <string name="user_name">User Name</string>
     <string name="password">Password</string>
     <string name="confirm_password">Confirm Password</string>
+    <string name="country">Country</string>
     <string name="submit_button">Submit</string>
 
     <string name="account_exist">Username %1$s already registered!</string>
     <string name="invalid">Invalid username or password, please try again or create account if not yet registered.</string>
-
+    <string name="invalid_password">Invalid password.</string>
     <integer name="max_length">20</integer>
 </resources>

@@ -6,10 +6,7 @@ import com.enaz.cartrack.main.common.fragment.BaseFragment
 import com.enaz.cartrack.main.common.util.reObserve
 import com.enaz.cartrack.main.common.util.setViewVisibility
 import com.enaz.cartrack.main.ui.fragment.databinding.CreateAccountFragmentBinding
-import com.enaz.cartrack.main.ui.model.AccountExistModel
-import com.enaz.cartrack.main.ui.model.FailingModel
-import com.enaz.cartrack.main.ui.model.LoadingModel
-import com.enaz.cartrack.main.ui.model.LoadingViewState
+import com.enaz.cartrack.main.ui.model.*
 import com.enaz.cartrack.main.ui.viewmodel.CreateAccountViewModel
 import kotlinx.android.synthetic.main.create_account_fragment.*
 import javax.inject.Inject
@@ -27,8 +24,10 @@ class CreateAccountFragment : BaseFragment<CreateAccountFragmentBinding, CreateA
 
     override fun initViews() {
         submit_button.setOnClickListener {
-            viewModel.submit(first_name_field.text.toString(), last_name_field.text.toString(),
-                user_name_field.text.toString(), password_field.text.toString())
+            viewModel.submit(
+                first_name_field.text.toString(), last_name_field.text.toString(),
+                user_name_field.text.toString(), password_field.text.toString()
+            )
         }
     }
 
@@ -38,8 +37,8 @@ class CreateAccountFragment : BaseFragment<CreateAccountFragmentBinding, CreateA
         }
     }
 
-    private fun onLoadingStateChanged(state: LoadingViewState?) {
-        when(state) {
+    private fun onLoadingStateChanged(state: CreateAccountViewState?) {
+        when (state) {
             is LoadingModel -> {
                 loading_layout.setViewVisibility(state.isLoading)
                 if (!state.isLoading) view?.let { listener?.submit(it) }
@@ -51,7 +50,35 @@ class CreateAccountFragment : BaseFragment<CreateAccountFragmentBinding, CreateA
 
             is AccountExistModel -> {
                 loading_layout.setViewVisibility(false)
-                error_message.setViewVisibility(getString(state.message, user_name_field.text.toString()))
+                error_message.setViewVisibility(
+                    getString(
+                        state.message,
+                        user_name_field.text.toString()
+                    )
+                )
+            }
+
+            is ValidModel -> {
+                submit_button.isEnabled = state.isValid
+                if (state.isValid) {
+                    submit_button.background =
+                        resources.getDrawable(R.drawable.btn_selector_shape, null)
+                } else {
+                    submit_button.setBackgroundColor(
+                        resources.getColor(
+                            R.color.disabledColorPrimary,
+                            null
+                        )
+                    )
+                }
+            }
+
+            is MatchPasswordModel -> {
+                if (state.isMatchPassword) {
+                    confirm_password_field.error = null
+                } else {
+                    confirm_password_field.error = getString(R.string.invalid_password)
+                }
             }
         }
     }

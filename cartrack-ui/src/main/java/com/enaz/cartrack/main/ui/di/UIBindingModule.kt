@@ -1,20 +1,21 @@
-package com.enaz.cartrack.main.ui.di.login
+package com.enaz.cartrack.main.ui.di
 
 import androidx.lifecycle.ViewModelProvider
 import com.enaz.cartrack.main.ui.fragment.CreateAccountFragment
 import com.enaz.cartrack.main.ui.fragment.LoginFragment
+import com.enaz.cartrack.main.ui.fragment.UsersFragment
 import com.enaz.cartrack.main.ui.viewmodel.CreateAccountViewModel
 import com.enaz.cartrack.main.ui.viewmodel.LoginViewModel
+import com.enaz.cartrack.main.ui.viewmodel.UsersViewModel
 import dagger.Module
 import dagger.Provides
 import dagger.android.ContributesAndroidInjector
 
 /**
- * Created by eduardo.delito on 7/26/20.
+ * Created by eduardo.delito on 7/27/20.
  */
 @Module
-abstract class LoginBindingModule {
-
+abstract class UIBindingModule {
     @ContributesAndroidInjector(modules = [InjectLoginViewModelModule::class])
     abstract fun bindLoginFragment(): LoginFragment
 
@@ -37,5 +38,17 @@ abstract class LoginBindingModule {
             factory: ViewModelProvider.Factory,
             target: CreateAccountFragment
         ) = ViewModelProvider(target, factory).get(CreateAccountViewModel::class.java)
+    }
+
+    @ContributesAndroidInjector(modules = [InjectUsersViewModelModule::class])
+    abstract fun bindUsersFragment(): UsersFragment
+
+    @Module
+    class InjectUsersViewModelModule {
+        @Provides
+        internal fun provideUsersViewModel(
+            factory: ViewModelProvider.Factory,
+            target: UsersFragment
+        ) = ViewModelProvider(target, factory).get(UsersViewModel::class.java)
     }
 }

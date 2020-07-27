@@ -2,8 +2,7 @@ package com.enaz.cartrack.main.di.module
 
 import androidx.lifecycle.ViewModelProvider
 import com.enaz.cartrack.main.common.viewmodel.ViewModelFactory
-import com.enaz.cartrack.main.ui.di.login.LoginViewModelModule
-import com.enaz.cartrack.main.ui.di.users.UsersViewModelModule
+import com.enaz.cartrack.main.ui.di.UIViewModelModule
 import dagger.Binds
 import dagger.Module
 
@@ -12,8 +11,7 @@ import dagger.Module
  */
 @Module(
     includes = [
-        LoginViewModelModule::class,
-        UsersViewModelModule::class
+        UIViewModelModule::class
     ]
 )
 abstract class ViewModelBindingModule {

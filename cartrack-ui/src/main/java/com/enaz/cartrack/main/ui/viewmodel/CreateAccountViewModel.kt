@@ -17,37 +17,85 @@ import kotlin.coroutines.CoroutineContext
 class CreateAccountViewModel @Inject constructor(private val cartrackRepository: CartrackRepository) :
     BaseViewModel(), CoroutineScope {
 
-    private val loading = MediatorLiveData<LoadingViewState>()
-    internal fun getLoadingLiveData(): LiveData<LoadingViewState> = loading
+    private var firstName: String = EMPTY_STRING
+    private var lastName: String = EMPTY_STRING
+    private var userName: String = EMPTY_STRING
+    private var password: String = EMPTY_STRING
+    private var confirmPassword: String = EMPTY_STRING
+
+    private val createAccount = MediatorLiveData<CreateAccountViewState>()
+    internal fun getLoadingLiveData(): LiveData<CreateAccountViewState> = createAccount
 
     override val coroutineContext: CoroutineContext
         get() = Dispatchers.Main
 
-    fun submit(firstName: String, lastName: String,
-               userName: String, password: String) {
-        loading.postValue(LoadingModel(true))
-        launch {
-            var account = Account(firstName, lastName, userName, password)
-            insertAccount(account)
+    fun submit(
+        fName: String, lName: String,
+        user: String, pass: String
+    ) {
+        if ((password == confirmPassword)) {
+            createAccount.postValue(LoadingModel(true))
+            launch {
+                var account = Account(fName, lName, user, pass)
+                insertAccount(account)
+            }
+        } else {
+            createAccount.postValue(MatchPasswordModel(false))
         }
-
-
     }
 
     private suspend fun insertAccount(account: Account) {
         withContext(Dispatchers.IO) {
             try {
                 if (cartrackRepository.isUserExist(account.userName)) {
-                    loading.postValue(FailingModel(true))
-                    loading.postValue(AccountExistModel(R.string.account_exist))
+                    createAccount.postValue(FailingModel(true))
+                    createAccount.postValue(AccountExistModel(R.string.account_exist))
                 } else {
-                    loading.postValue(LoadingModel(false))
+                    createAccount.postValue(LoadingModel(false))
                     cartrackRepository.submit(account.modelToEntityAccount())
                 }
             } catch (e: Exception) {
-                loading.postValue(FailingModel(true))
+                createAccount.postValue(FailingModel(true))
             }
         }
     }
 
+    fun onFirstNameChanged(text: CharSequence) {
+        firstName = text.toString()
+        validate()
+    }
+
+    fun onLastNameChanged(text: CharSequence) {
+        lastName = text.toString()
+        validate()
+    }
+
+    fun onUsernameChanged(text: CharSequence) {
+        userName = text.toString()
+        validate()
+    }
+
+    fun onPasswordChanged(text: CharSequence) {
+        password = text.toString()
+        validate()
+    }
+
+    fun onConfirmPasswordChanged(text: CharSequence) {
+        confirmPassword = text.toString()
+        validate()
+    }
+
+    private fun validate() {
+        if (!firstName.isNullOrEmpty() && !lastName.isNullOrEmpty() &&
+            userName.length >= 6 && password.length >= 6 &&
+            confirmPassword.length >= 6) {
+            createAccount.postValue(ValidModel(true))
+        } else {
+            createAccount.postValue(ValidModel(false))
+        }
+    }
+
+    companion object {
+        private const val EMPTY_STRING = ""
+    }
 }

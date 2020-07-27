@@ -38,6 +38,7 @@
             android:hint="@string/first_name"
             android:inputType="textPersonName"
             android:maxLength="@integer/max_length"
+            android:onTextChanged="@{(text, start, before, count) -> createAccountViewModel.onFirstNameChanged(text)}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/create_account_label" />
@@ -54,6 +55,7 @@
             android:hint="@string/last_name"
             android:inputType="textPersonName"
             android:maxLength="@integer/max_length"
+            android:onTextChanged="@{(text, start, before, count) -> createAccountViewModel.onLastNameChanged(text)}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/first_name_field" />
@@ -70,6 +72,7 @@
             android:hint="@string/user_name"
             android:inputType="textPersonName"
             android:maxLength="@integer/max_length"
+            android:onTextChanged="@{(text, start, before, count) -> createAccountViewModel.onUsernameChanged(text)}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/last_name_field" />
@@ -86,6 +89,7 @@
             android:hint="@string/password"
             android:inputType="textPassword"
             android:maxLength="@integer/max_length"
+            android:onTextChanged="@{(text, start, before, count) -> createAccountViewModel.onPasswordChanged(text)}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/user_name_field" />
@@ -102,9 +106,31 @@
             android:hint="@string/confirm_password"
             android:inputType="textPassword"
             android:maxLength="@integer/max_length"
+            android:onTextChanged="@{(text, start, before, count) -> createAccountViewModel.onConfirmPasswordChanged(text)}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/password_field" />
+
+        <EditText
+            android:id="@+id/country_field"
+            style="@style/AvenirMedium.Black"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/padding16"
+            android:layout_marginTop="@dimen/margin20"
+            android:layout_marginEnd="@dimen/padding16"
+            android:cursorVisible="false"
+            android:ems="10"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
+            android:hint="@string/country"
+            android:inputType="text"
+            android:maxLength="@integer/max_length"
+            android:onTextChanged="@{(text, start, before, count) -> createAccountViewModel.onConfirmPasswordChanged(text)}"
+            android:text="Philippines"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/confirm_password_field" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/error_message"
@@ -118,7 +144,7 @@
             android:visibility="gone"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/confirm_password_field" />
+            app:layout_constraintTop_toBottomOf="@+id/country_field" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/submit_button"
@@ -128,7 +154,8 @@
             android:layout_marginStart="@dimen/padding16"
             android:layout_marginTop="@dimen/margin70"
             android:layout_marginEnd="@dimen/padding16"
-            android:background="@drawable/btn_selector_shape"
+            android:background="@color/disabledColorPrimary"
+            android:enabled="false"
             android:gravity="center_horizontal|center_vertical"
             android:text="@string/submit_button"
             app:layout_constraintEnd_toEndOf="parent"

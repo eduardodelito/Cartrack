@@ -1,8 +1,7 @@
 package com.enaz.cartrack.main.di.module
 
 import com.enaz.cartrack.main.ui.MainActivity
-import com.enaz.cartrack.main.ui.di.login.LoginBindingModule
-import com.enaz.cartrack.main.ui.di.users.UsersBindingModule
+import com.enaz.cartrack.main.ui.di.UIBindingModule
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 
@@ -12,8 +11,7 @@ import dagger.android.ContributesAndroidInjector
 @Module
 abstract class ActivityBindingModule {
     @ContributesAndroidInjector(modules = [
-        LoginBindingModule::class,
-        UsersBindingModule::class
+        UIBindingModule::class
     ])
     abstract fun bindMainActivity(): MainActivity
 }

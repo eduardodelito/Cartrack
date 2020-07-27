@@ -24,8 +24,8 @@ class LoginViewModel @Inject constructor(private var cartrackRepository: Cartrac
 
     private val login = MediatorLiveData<LoginViewState>()
     internal fun getLoginLiveData(): LiveData<LoginViewState> = login
-    private var userName: String = ""
-    private var password: String = ""
+    private var userName: String = EMPTY_STRING
+    private var password: String = EMPTY_STRING
 
     fun onUsernameTextChanged(text: CharSequence) {
         userName = text.toString()
@@ -64,5 +64,9 @@ class LoginViewModel @Inject constructor(private var cartrackRepository: Cartrac
                 login.postValue(LoginSuccessModel(false))
             }
         }
+    }
+
+    companion object {
+        private const val EMPTY_STRING = ""
     }
 }
