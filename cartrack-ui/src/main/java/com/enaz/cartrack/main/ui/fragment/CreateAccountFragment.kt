@@ -2,19 +2,28 @@ package com.enaz.cartrack.main.ui.fragment
 
 import android.content.Context
 import android.view.View
+import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.enaz.cartrack.main.client.model.CountriesResponse
 import com.enaz.cartrack.main.common.fragment.BaseFragment
 import com.enaz.cartrack.main.common.util.hideKeyboard
 import com.enaz.cartrack.main.common.util.reObserve
 import com.enaz.cartrack.main.common.util.setViewVisibility
+import com.enaz.cartrack.main.db.entity.CountriesEntity
+import com.enaz.cartrack.main.ui.adapter.CountriesAdapter
 import com.enaz.cartrack.main.ui.fragment.databinding.CreateAccountFragmentBinding
+import com.enaz.cartrack.main.ui.mapper.countriesEntityToCountriesResponse
 import com.enaz.cartrack.main.ui.model.*
 import com.enaz.cartrack.main.ui.viewmodel.CreateAccountViewModel
+import com.google.android.material.bottomsheet.BottomSheetDialog
 import kotlinx.android.synthetic.main.create_account_fragment.*
 import javax.inject.Inject
 
 class CreateAccountFragment : BaseFragment<CreateAccountFragmentBinding, CreateAccountViewModel>() {
 
     private var listener: OnCreateAccountFragment? = null
+    private var dialog: BottomSheetDialog? = null
 
     @Inject
     override lateinit var viewModel: CreateAccountViewModel
@@ -36,6 +45,11 @@ class CreateAccountFragment : BaseFragment<CreateAccountFragmentBinding, CreateA
     override fun subscribeUi() {
         with(viewModel) {
             reObserve(getLoadingLiveData(), ::onLoadingStateChanged)
+            reObserve(getCountries(), ::showBottomCountriesDialog)
+        }
+
+        country_field.setOnClickListener {
+            viewModel.loadCountries()
         }
     }
 
@@ -85,7 +99,38 @@ class CreateAccountFragment : BaseFragment<CreateAccountFragmentBinding, CreateA
                     confirm_password_field.error = getString(R.string.invalid_password)
                 }
             }
+
+            is CountryLoadingModel -> loading_layout.setViewVisibility(state.isLoading)
         }
+    }
+
+    private fun showBottomCountriesDialog(list: List<CountriesEntity>?) {
+        if (!list.isNullOrEmpty()) {
+            dialog?.dismiss()
+            dialog = context?.let { BottomSheetDialog(it) }
+            val countriesAdapter =
+                CountriesAdapter(object : CountriesAdapter.OnCountriesAdapterListener {
+                    override fun onCountrySelected(countriesResponse: CountriesResponse) {
+                        updateCountryField(countriesResponse.name)
+                        dialog?.dismiss()
+                    }
+                })
+            val view = layoutInflater.inflate(R.layout.bottom_countriest_layout, null)
+            val recyclerView = view.findViewById<RecyclerView>(R.id.countryRecyclerView)
+            val layoutManager = LinearLayoutManager(context)
+            recyclerView.layoutManager = layoutManager
+            recyclerView.addItemDecoration(
+                DividerItemDecoration(context, LinearLayoutManager.VERTICAL)
+            )
+            recyclerView.adapter = countriesAdapter
+            countriesAdapter.updateData(list.countriesEntityToCountriesResponse())
+            dialog?.setContentView(view)
+            dialog?.show()
+        }
+    }
+
+    private fun updateCountryField(name: String?) {
+        country_field.setText(name)
     }
 
     override fun onAttach(context: Context) {
@@ -98,6 +143,7 @@ class CreateAccountFragment : BaseFragment<CreateAccountFragmentBinding, CreateA
     override fun onDetach() {
         super.onDetach()
         listener = null
+        viewModel.deleteCountries()
     }
 
     interface OnCreateAccountFragment {

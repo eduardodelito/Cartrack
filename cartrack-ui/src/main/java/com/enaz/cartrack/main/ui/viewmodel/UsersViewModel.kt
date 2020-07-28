@@ -2,7 +2,7 @@ package com.enaz.cartrack.main.ui.viewmodel
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MediatorLiveData
-import com.enaz.cartrack.main.client.repository.CartrackRepository
+import com.enaz.cartrack.main.client.repository.UsersRepository
 import com.enaz.cartrack.main.common.viewmodel.BaseViewModel
 import com.enaz.cartrack.main.ui.mapper.userResponseModelToUsersResponse
 import com.enaz.cartrack.main.ui.model.UsersLoading
@@ -14,7 +14,7 @@ import kotlinx.coroutines.withContext
 import javax.inject.Inject
 import kotlin.coroutines.CoroutineContext
 
-class UsersViewModel @Inject constructor(private var cartrackRepository: CartrackRepository) :
+class UsersViewModel @Inject constructor(private var usersRepository: UsersRepository) :
     BaseViewModel(), CoroutineScope {
     override val coroutineContext: CoroutineContext
         get() = Dispatchers.Main
@@ -25,7 +25,7 @@ class UsersViewModel @Inject constructor(private var cartrackRepository: Cartrac
     /**
      * Get movie list from local data base.
      */
-    fun getUsers() = cartrackRepository.getUsers()
+    fun getUsers() = usersRepository.getUsers()
 
     fun loadUsers() {
         users.postValue(UsersLoading(true))
@@ -38,7 +38,7 @@ class UsersViewModel @Inject constructor(private var cartrackRepository: Cartrac
         withContext(Dispatchers.IO) {
             try {
                 users.postValue(UsersLoading(false))
-                cartrackRepository.insertUsers(cartrackRepository.getUsersResponse().getUsersResponse().userResponseModelToUsersResponse())
+                usersRepository.insertUsers(usersRepository.getUsersResponse().getUsersResponse().userResponseModelToUsersResponse())
             } catch (e: Exception) {
                 e.printStackTrace()
                 users.postValue(UsersLoading(false))
@@ -52,5 +52,4 @@ class UsersViewModel @Inject constructor(private var cartrackRepository: Cartrac
     fun refresh() {
         loadUsers()
     }
-
 }

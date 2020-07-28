@@ -33,4 +33,6 @@
 
     <string name="details_company_label">Company</string>
     <string name="details_company_name">Name : %1$s</string>
+
+    <string name="item_country">%1$s %2$s</string>
 </resources>

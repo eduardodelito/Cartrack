@@ -1,6 +1,7 @@
 package com.enaz.cartrack.main.client
 
-import com.enaz.cartrack.main.CartrackApiService
+import com.enaz.cartrack.main.client.service.CountriesApiService
+import com.enaz.cartrack.main.client.service.UsersApiService
 import com.enaz.cartrack.main.db.BuildConfig
 import okhttp3.*
 import retrofit2.Retrofit
@@ -13,15 +14,23 @@ import retrofit2.converter.gson.GsonConverterFactory
  */
 class CartrackApiClient(okHttp: OkHttpClient.Builder) : Interceptor, Authenticator {
 
-    private var retrofit: Retrofit
+    private var retrofitForUsers: Retrofit
+    private var retrofitForCountries: Retrofit
 
     init {
         okHttp.addInterceptor(this)
         okHttp.authenticator(this)
-        retrofit = Retrofit.Builder()
+
+        retrofitForUsers = Retrofit.Builder()
             .client(okHttp.build())
             .addConverterFactory(GsonConverterFactory.create())
             .baseUrl(BuildConfig.BASE_HTTP_URL)
+            .build()
+
+        retrofitForCountries = Retrofit.Builder()
+            .client(okHttp.build())
+            .addConverterFactory(GsonConverterFactory.create())
+            .baseUrl(BuildConfig.COUNTRY_BASE_HTTP_URL)
             .build()
     }
 
@@ -51,8 +60,15 @@ class CartrackApiClient(okHttp: OkHttpClient.Builder) : Interceptor, Authenticat
     /**
      * Instance call for the retrofit service.
      */
-    fun getCartrackResponse(): CartrackApiService {
-        return retrofit.create(CartrackApiService::class.java)
+    fun getUsersResponse(): UsersApiService {
+        return retrofitForUsers.create(UsersApiService::class.java)
+    }
+
+    /**
+     * Instance call for the retrofit service.
+     */
+    fun getCountriesResponse(): CountriesApiService {
+        return retrofitForCountries.create(CountriesApiService::class.java)
     }
 
     companion object {

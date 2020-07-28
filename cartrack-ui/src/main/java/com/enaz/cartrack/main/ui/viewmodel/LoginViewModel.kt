@@ -2,7 +2,7 @@ package com.enaz.cartrack.main.ui.viewmodel
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MediatorLiveData
-import com.enaz.cartrack.main.client.repository.CartrackRepository
+import com.enaz.cartrack.main.client.repository.AccountRepository
 import com.enaz.cartrack.main.common.viewmodel.BaseViewModel
 import com.enaz.cartrack.main.ui.fragment.R
 import com.enaz.cartrack.main.ui.model.ErrorModel
@@ -16,7 +16,7 @@ import kotlinx.coroutines.withContext
 import javax.inject.Inject
 import kotlin.coroutines.CoroutineContext
 
-class LoginViewModel @Inject constructor(private var cartrackRepository: CartrackRepository) :
+class LoginViewModel @Inject constructor(private var accountRepository: AccountRepository) :
     BaseViewModel(), CoroutineScope {
 
     override val coroutineContext: CoroutineContext
@@ -54,7 +54,7 @@ class LoginViewModel @Inject constructor(private var cartrackRepository: Cartrac
     private suspend fun login(userName: String, password: String) {
         withContext(Dispatchers.IO) {
             try {
-                if (cartrackRepository.isUsernamePasswordValid(userName, password)) {
+                if (accountRepository.isUsernamePasswordValid(userName, password)) {
                     login.postValue(LoginSuccessModel(true))
                 } else {
                     login.postValue(ErrorModel(R.string.invalid))

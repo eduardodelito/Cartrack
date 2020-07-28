@@ -6,7 +6,7 @@
 
         <variable
             name="usersResponse"
-            type="com.enaz.cartrack.main.client.UsersResponse" />
+            type="com.enaz.cartrack.main.client.model.UsersResponse" />
     </data>
 
     <androidx.cardview.widget.CardView

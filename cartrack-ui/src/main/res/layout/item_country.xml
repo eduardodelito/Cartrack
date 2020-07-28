@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="countryResponse"
+            type="com.enaz.cartrack.main.client.model.CountriesResponse" />
+    </data>
+
+    <LinearLayout
+        android:id="@+id/item_country_layout"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/height50"
+        android:background="@color/background"
+        android:gravity="left|center_vertical"
+        android:orientation="horizontal"
+        android:paddingStart="@dimen/padding16"
+        android:paddingEnd="@dimen/padding16">
+        <TextView
+            android:id="@+id/countyName"
+            style="@style/AvenirMedium.Black"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/margin16"
+            android:text="@{countryResponse.name}" />
+    </LinearLayout>
+</layout>

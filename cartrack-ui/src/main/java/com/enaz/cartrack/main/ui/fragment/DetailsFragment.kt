@@ -1,6 +1,6 @@
 package com.enaz.cartrack.main.ui.fragment
 
-import com.enaz.cartrack.main.client.UsersResponse
+import com.enaz.cartrack.main.client.model.UsersResponse
 import com.enaz.cartrack.main.common.fragment.BaseFragment
 import com.enaz.cartrack.main.common.util.reObserve
 import com.enaz.cartrack.main.common.util.setViewVisibility

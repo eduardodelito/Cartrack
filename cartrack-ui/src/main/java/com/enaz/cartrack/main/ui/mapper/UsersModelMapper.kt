@@ -1,6 +1,6 @@
 package com.enaz.cartrack.main.ui.mapper
 
-import com.enaz.cartrack.main.client.UsersResponse
+import com.enaz.cartrack.main.client.model.UsersResponse
 import com.enaz.cartrack.main.db.entity.UsersEntity
 
 /**

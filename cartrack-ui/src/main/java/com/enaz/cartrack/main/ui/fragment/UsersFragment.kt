@@ -6,7 +6,7 @@ import android.view.View
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.enaz.cartrack.main.client.UsersResponse
+import com.enaz.cartrack.main.client.model.UsersResponse
 import com.enaz.cartrack.main.common.fragment.BaseFragment
 import com.enaz.cartrack.main.common.util.reObserve
 import com.enaz.cartrack.main.db.entity.UsersEntity

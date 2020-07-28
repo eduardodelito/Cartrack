@@ -2,7 +2,7 @@ package com.enaz.cartrack.main.ui.viewmodel
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MediatorLiveData
-import com.enaz.cartrack.main.client.UsersResponse
+import com.enaz.cartrack.main.client.model.UsersResponse
 import com.enaz.cartrack.main.common.viewmodel.BaseViewModel
 import com.enaz.cartrack.main.ui.model.AvailableModel
 import com.enaz.cartrack.main.ui.model.DetailsViewState

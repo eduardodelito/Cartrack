@@ -4,7 +4,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.core.os.bundleOf
 import androidx.navigation.findNavController
-import com.enaz.cartrack.main.client.UsersResponse
+import com.enaz.cartrack.main.client.model.UsersResponse
 import com.enaz.cartrack.main.ui.fragment.*
 import dagger.android.support.DaggerAppCompatActivity
 

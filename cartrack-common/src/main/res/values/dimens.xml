@@ -12,11 +12,15 @@
     <dimen name="margin100">100dp</dimen>
 
     <!--Padding-->
+    <dimen name="padding5">5dp</dimen>
     <dimen name="padding16">16dp</dimen>
 
     <!--Height-->
     <dimen name="height_0">0dp</dimen>
     <dimen name="height50">50dp</dimen>
+
+    <!--Width-->
+    <dimen name="width0">0dp</dimen>
 
     <!--Font Size-->
     <dimen name="font18">18sp</dimen>

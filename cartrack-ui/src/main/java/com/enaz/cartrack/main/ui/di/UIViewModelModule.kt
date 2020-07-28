@@ -1,7 +1,9 @@
 package com.enaz.cartrack.main.ui.di
 
 import androidx.lifecycle.ViewModel
-import com.enaz.cartrack.main.client.repository.CartrackRepository
+import com.enaz.cartrack.main.client.repository.AccountRepository
+import com.enaz.cartrack.main.client.repository.CountriesRepository
+import com.enaz.cartrack.main.client.repository.UsersRepository
 import com.enaz.cartrack.main.common.viewmodel.ViewModelKey
 import com.enaz.cartrack.main.ui.viewmodel.DetailsViewModel
 import com.enaz.cartrack.main.ui.viewmodel.CreateAccountViewModel
@@ -19,20 +21,20 @@ class UIViewModelModule {
     @Provides
     @IntoMap
     @ViewModelKey(LoginViewModel::class)
-    fun provideLoginViewModel(cartrackRepository: CartrackRepository): ViewModel =
-        LoginViewModel(cartrackRepository)
+    fun provideLoginViewModel(accountRepository: AccountRepository): ViewModel =
+        LoginViewModel(accountRepository)
 
     @Provides
     @IntoMap
     @ViewModelKey(CreateAccountViewModel::class)
-    fun provideCreateAccountViewModel(cartrackRepository: CartrackRepository): ViewModel =
-        CreateAccountViewModel(cartrackRepository)
+    fun provideCreateAccountViewModel(accountRepository: AccountRepository, countriesRepository: CountriesRepository): ViewModel =
+        CreateAccountViewModel(accountRepository, countriesRepository)
 
     @Provides
     @IntoMap
     @ViewModelKey(UsersViewModel::class)
-    fun provideUsersViewModel(cartrackRepository: CartrackRepository): ViewModel =
-        UsersViewModel(cartrackRepository)
+    fun provideUsersViewModel(usersRepository: UsersRepository): ViewModel =
+        UsersViewModel(usersRepository)
 
     @Provides
     @IntoMap

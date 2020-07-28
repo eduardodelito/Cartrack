@@ -1,9 +1,9 @@
 package com.enaz.cartrack.main.di
 
 import com.enaz.cartrack.main.client.CartrackApiClient
-import com.enaz.cartrack.main.client.repository.CartrackRepository
-import com.enaz.cartrack.main.client.repository.CartrackRepositoryImpl
+import com.enaz.cartrack.main.client.repository.*
 import com.enaz.cartrack.main.db.dao.AccountDao
+import com.enaz.cartrack.main.db.dao.CountriesDao
 import com.enaz.cartrack.main.db.dao.UsersDao
 import dagger.Module
 import dagger.Provides
@@ -26,12 +26,24 @@ class ClientModule {
 
     @Provides
     @Singleton
-    fun provideCartrackApiClient(okHttpClient: OkHttpClient.Builder) = CartrackApiClient(okHttpClient)
+    fun provideCartrackApiClient(okHttpClient: OkHttpClient.Builder) =
+        CartrackApiClient(okHttpClient)
 
     @Provides
     @Singleton
-    fun provideCartrackRepository(
+    fun provideCartrackRepository(accountDao: AccountDao): AccountRepository =
+        AccountRepositoryImpl(accountDao)
+
+    @Provides
+    @Singleton
+    fun provideUsersRepository(
         cartrackApiClient: CartrackApiClient,
-        accountDao: AccountDao, usersDao: UsersDao): CartrackRepository =
-        CartrackRepositoryImpl(cartrackApiClient, accountDao, usersDao)
+        usersDao: UsersDao
+    ): UsersRepository =
+        UsersRepositoryImpl(cartrackApiClient, usersDao)
+
+    @Provides
+    @Singleton
+    fun provideCountriesRepository(cartrackApiClient: CartrackApiClient, countriesDao: CountriesDao): CountriesRepository =
+        CountriesRepositoryImpl(cartrackApiClient, countriesDao)
 }

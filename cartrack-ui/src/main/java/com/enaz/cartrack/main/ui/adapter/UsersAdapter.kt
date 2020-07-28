@@ -5,7 +5,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.enaz.cartrack.main.client.UsersResponse
+import com.enaz.cartrack.main.client.model.UsersResponse
 import com.enaz.cartrack.main.ui.fragment.R
 import com.enaz.cartrack.main.ui.fragment.databinding.ItemUserBinding
 
@@ -13,21 +13,21 @@ import com.enaz.cartrack.main.ui.fragment.databinding.ItemUserBinding
  * Created by eduardo.delito on 7/27/20.
  */
 class UsersAdapter(private val listener: OnUsersAdapterListener) :
-    RecyclerView.Adapter<UsersAdapter.MovieViewHolder>() {
+    RecyclerView.Adapter<UsersAdapter.UsersViewHolder>() {
 
     private var list: List<UsersResponse> = mutableListOf()
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): UsersViewHolder {
         val itemUserBinding: ItemUserBinding = DataBindingUtil.inflate(
             LayoutInflater.from(parent.context),
             R.layout.item_user,
             parent,
             false
         )
-        return MovieViewHolder(itemUserBinding)
+        return UsersViewHolder(itemUserBinding)
     }
 
-    override fun onBindViewHolder(holder: MovieViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: UsersViewHolder, position: Int) {
         holder.itemUserBinding.usersResponse = list[position]
         holder.itemUserBinding.executePendingBindings()
         holder.itemUserBinding.itemLayout.setOnClickListener {
@@ -46,7 +46,7 @@ class UsersAdapter(private val listener: OnUsersAdapterListener) :
         notifyDataSetChanged()
     }
 
-    inner class MovieViewHolder(val itemUserBinding: ItemUserBinding) :
+    inner class UsersViewHolder(val itemUserBinding: ItemUserBinding) :
         RecyclerView.ViewHolder(itemUserBinding.root)
 
     /**

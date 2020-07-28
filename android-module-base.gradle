@@ -18,10 +18,12 @@ android {
     buildTypes {
         debug {
             buildConfigField 'String', 'BASE_HTTP_URL', '"https://jsonplaceholder.typicode.com/"'
+            buildConfigField 'String', 'COUNTRY_BASE_HTTP_URL', '"https://restcountries.eu/"'
         }
         release {
             minifyEnabled false
             buildConfigField 'String', 'BASE_HTTP_URL', '"https://jsonplaceholder.typicode.com/"'
+            buildConfigField 'String', 'COUNTRY_BASE_HTTP_URL', '"https://restcountries.eu/"'
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }

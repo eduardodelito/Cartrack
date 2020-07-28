@@ -1,4 +1,4 @@
-package com.enaz.cartrack.main.client
+package com.enaz.cartrack.main.client.model
 
 import com.enaz.cartrack.main.db.entity.Address
 import com.enaz.cartrack.main.db.entity.Company
