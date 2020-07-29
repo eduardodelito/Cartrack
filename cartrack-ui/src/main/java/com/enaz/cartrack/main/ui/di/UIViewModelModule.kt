@@ -5,10 +5,7 @@ import com.enaz.cartrack.main.client.repository.AccountRepository
 import com.enaz.cartrack.main.client.repository.CountriesRepository
 import com.enaz.cartrack.main.client.repository.UsersRepository
 import com.enaz.cartrack.main.common.viewmodel.ViewModelKey
-import com.enaz.cartrack.main.ui.viewmodel.DetailsViewModel
-import com.enaz.cartrack.main.ui.viewmodel.CreateAccountViewModel
-import com.enaz.cartrack.main.ui.viewmodel.LoginViewModel
-import com.enaz.cartrack.main.ui.viewmodel.UsersViewModel
+import com.enaz.cartrack.main.ui.viewmodel.*
 import dagger.Module
 import dagger.Provides
 import dagger.multibindings.IntoMap
@@ -41,4 +38,10 @@ class UIViewModelModule {
     @ViewModelKey(DetailsViewModel::class)
     fun provideDetailsViewModel(): ViewModel =
         DetailsViewModel()
+
+    @Provides
+    @IntoMap
+    @ViewModelKey(MapsViewModel::class)
+    fun provideMapsViewModel(): ViewModel =
+        MapsViewModel()
 }

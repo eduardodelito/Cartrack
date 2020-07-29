@@ -75,7 +75,7 @@ class UsersFragment : BaseFragment<UsersFragmentBinding, UsersViewModel>(){
         list?.entityModelToUsersResponse()?.let {
             if (!it.isNullOrEmpty()) {
                 usersAdapter.updateData(it)
-                listener?.loadFirstIndex(it[0])
+                view?.let { it1 -> listener?.loadFirstIndex(it[0], it1) }
             }
         }
     }
@@ -107,7 +107,7 @@ class UsersFragment : BaseFragment<UsersFragmentBinding, UsersViewModel>(){
          * Display first index as default details.
          * @param userItem data to display details.
          */
-        fun loadFirstIndex(userItem: UsersResponse?)
+        fun loadFirstIndex(userItem: UsersResponse?, view: View)
     }
 
     companion object {

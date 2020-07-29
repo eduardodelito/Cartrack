@@ -1,5 +1,7 @@
 package com.enaz.cartrack.main.ui.fragment
 
+import android.content.Context
+import android.view.View
 import com.enaz.cartrack.main.client.model.UsersResponse
 import com.enaz.cartrack.main.common.fragment.BaseFragment
 import com.enaz.cartrack.main.common.util.reObserve
@@ -13,6 +15,10 @@ import javax.inject.Inject
 
 class DetailsFragment : BaseFragment<DetailsFragmentBinding, DetailsViewModel>() {
 
+    private var mUserItem: UsersResponse? = null
+    private var listener: OnDetailsFragmentListener? = null
+    private var mView: View? = null
+
     @Inject
     override lateinit var viewModel: DetailsViewModel
 
@@ -21,8 +27,17 @@ class DetailsFragment : BaseFragment<DetailsFragmentBinding, DetailsViewModel>()
     override fun getBindingVariable() = BR.detailsViewModel
 
     override fun initViews() {
-        val userItem = arguments?.getSerializable(USER_ITEM) as UsersResponse?
-        updateDetails(userItem)
+        mUserItem = arguments?.getSerializable(USER_ITEM) as UsersResponse?
+        updateDetails(mUserItem, mView)
+
+        address_location_btn.setOnClickListener {
+            var isFromDetails = false
+            if (mView == null) {
+                mView = it
+                isFromDetails = true
+            }
+            mView?.let { it1 -> listener?.navigateToMapLocation(it1, isFromDetails) }
+        }
     }
 
     override fun subscribeUi() {
@@ -37,13 +52,31 @@ class DetailsFragment : BaseFragment<DetailsFragmentBinding, DetailsViewModel>()
         }
     }
 
-    fun updateDetails(userItem: UsersResponse?) {
+    fun updateDetails(userItem: UsersResponse?, view: View?) {
         with(viewModel) {
             user = userItem
             details(userItem)
+            mUserItem = userItem
+            mView = view;
         }
         getBinding().executePendingBindings()
         getBinding().invalidateAll()
+    }
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        if (context is OnDetailsFragmentListener) {
+            listener = context
+        }
+    }
+
+    override fun onDetach() {
+        super.onDetach()
+        listener = null
+    }
+
+    interface OnDetailsFragmentListener {
+        fun navigateToMapLocation(view: View, isFromDetails: Boolean)
     }
 
     companion object {

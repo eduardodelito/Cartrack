@@ -9,7 +9,8 @@ import com.enaz.cartrack.main.ui.fragment.*
 import dagger.android.support.DaggerAppCompatActivity
 
 class MainActivity : DaggerAppCompatActivity(), LoginFragment.OnLoginFragmentListener,
-    CreateAccountFragment.OnCreateAccountFragment, UsersFragment.OnUsersFragment {
+    CreateAccountFragment.OnCreateAccountFragment, UsersFragment.OnUsersFragment,
+    DetailsFragment.OnDetailsFragmentListener, MapsFragment.OnMapsFragmentListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -38,8 +39,17 @@ class MainActivity : DaggerAppCompatActivity(), LoginFragment.OnLoginFragmentLis
             val action = UsersFragmentDirections.actionUsersFragmentToDetailsFragment()
             view.findNavController().navigate(action.actionId, bundle)
         } else {
-            detailsFragment.updateDetails(usersResponse)
+            detailsFragment.updateDetails(usersResponse, view)
         }
+    }
+
+    override fun navigateToMapLocation(view: View, isFromDetails: Boolean) {
+        val action = if (isFromDetails)
+            DetailsFragmentDirections.actionDetailsFragmentToMapsFragment()
+        else
+            UsersFragmentDirections.actionUsersFragmentToMapsFragment()
+
+        view.findNavController().navigate(action)
     }
 
     override fun showDetails(isVisible: Boolean) {
@@ -53,7 +63,10 @@ class MainActivity : DaggerAppCompatActivity(), LoginFragment.OnLoginFragmentLis
         }
     }
 
-    override fun loadFirstIndex(userItem: UsersResponse?) {
-        (supportFragmentManager.findFragmentById(R.id.detailsFragment) as DetailsFragment?)?.updateDetails(userItem)
+    override fun loadFirstIndex(userItem: UsersResponse?, view: View) {
+        (supportFragmentManager.findFragmentById(R.id.detailsFragment) as DetailsFragment?)?.updateDetails(
+            userItem,
+            view
+        )
     }
 }

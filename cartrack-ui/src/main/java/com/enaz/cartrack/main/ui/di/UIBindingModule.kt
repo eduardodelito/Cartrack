@@ -2,10 +2,7 @@ package com.enaz.cartrack.main.ui.di
 
 import androidx.lifecycle.ViewModelProvider
 import com.enaz.cartrack.main.ui.fragment.*
-import com.enaz.cartrack.main.ui.viewmodel.CreateAccountViewModel
-import com.enaz.cartrack.main.ui.viewmodel.DetailsViewModel
-import com.enaz.cartrack.main.ui.viewmodel.LoginViewModel
-import com.enaz.cartrack.main.ui.viewmodel.UsersViewModel
+import com.enaz.cartrack.main.ui.viewmodel.*
 import dagger.Module
 import dagger.Provides
 import dagger.android.ContributesAndroidInjector
@@ -61,5 +58,17 @@ abstract class UIBindingModule {
             factory: ViewModelProvider.Factory,
             target: DetailsFragment
         ) = ViewModelProvider(target, factory).get(DetailsViewModel::class.java)
+    }
+
+    @ContributesAndroidInjector(modules = [InjectMapsModelModule::class])
+    abstract fun bindMapsFragment(): MapsFragment
+
+    @Module
+    class InjectMapsModelModule {
+        @Provides
+        internal fun provideMapsViewModel(
+            factory: ViewModelProvider.Factory,
+            target: MapsFragment
+        ) = ViewModelProvider(target, factory).get(MapsViewModel::class.java)
     }
 }
