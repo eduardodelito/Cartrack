@@ -15,10 +15,10 @@ This is based on the Guide to app architecture article with the androidx package
  
 # Dependency modules
  * buildSrc - Initialize all dependency libraries and versions.
- * movies-client - API request and parsing response and save it into local database.
- * movies-common - shared classes and functions.
- * movies-db - database to save data response.
- * movies-ui - To display API response/database into UI.
+ * cartrack-client - API request and parsing response and save it into local database.
+ * cartrack-common - shared classes and functions.
+ * cartrack-db - database to save data response.
+ * cartrack-ui - To display API response/database into UI.
 
 
 # Major libraries
