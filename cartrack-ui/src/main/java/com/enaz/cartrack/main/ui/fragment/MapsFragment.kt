@@ -18,12 +18,12 @@ import com.google.android.gms.maps.model.MarkerOptions
 class MapsFragment : SupportMapFragment(), OnMapReadyCallback {
 
     private var user: UsersResponse? = null
-    private var mMap: GoogleMap?= null
+    private var mMap: GoogleMap? = null
 
     private var listener: OnMapsFragmentListener? = null
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
+    override fun onCreate(bundle: Bundle?) {
+        super.onCreate(bundle)
         user = arguments?.getSerializable(USER_ITEM) as UsersResponse?
         listener?.showDetails(false)
         getMapAsync(this)
@@ -31,35 +31,49 @@ class MapsFragment : SupportMapFragment(), OnMapReadyCallback {
 
     override fun onMapReady(googleMap: GoogleMap?) {
         mMap = googleMap
-        if (activity?.let { checkSelfPermission(it, Manifest.permission.ACCESS_FINE_LOCATION) } == PackageManager.PERMISSION_GRANTED) {
+        if (activity?.let {
+                checkSelfPermission(
+                    it,
+                    Manifest.permission.ACCESS_FINE_LOCATION
+                )
+            } == PackageManager.PERMISSION_GRANTED) {
             mMap?.isMyLocationEnabled = true
         } else {
-            requestPermissions(arrayOf(Manifest.permission.ACCESS_FINE_LOCATION), REQUEST_CODE_USER_LOCATION_PERMISSION)
+            requestPermissions(
+                arrayOf(Manifest.permission.ACCESS_FINE_LOCATION),
+                REQUEST_CODE_USER_LOCATION_PERMISSION
+            )
         }
         mMap?.apply {
-                    val latLng = user?.address?.geo?.lng?.toDouble()?.let {  user?.address?.geo?.lat?.toDouble()?.let { it1 ->
-                        LatLng(
-                            it1, it)
-                    } }
-                    val markerOption = latLng?.let {
-                        MarkerOptions()
-                            .position(it)
-                    }
+            val latLng = user?.address?.geo?.lng?.toDouble()?.let {
+                user?.address?.geo?.lat?.toDouble()?.let { it1 ->
+                    LatLng(
+                        it1, it
+                    )
+                }
+            }
+            val markerOption = latLng?.let {
+                MarkerOptions()
+                    .position(it)
+            }
 
-                    val marker = addMarker(markerOption)
-                    marker.tag = user
+            val marker = addMarker(markerOption)
+            marker.tag = user
 
-                    moveCamera(CameraUpdateFactory.newLatLng(latLng))
-                    moveCamera(CameraUpdateFactory.zoomTo(MAP_ZOOM))
+            moveCamera(CameraUpdateFactory.newLatLng(latLng))
 
-                    val infoWindowAdapter = MapInfoWindowAdapter(requireActivity())
-                    setInfoWindowAdapter(infoWindowAdapter)
+            val infoWindowAdapter = MapInfoWindowAdapter(requireActivity())
+            setInfoWindowAdapter(infoWindowAdapter)
 
-                    marker.showInfoWindow()
+            marker.showInfoWindow()
         }
     }
 
-    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray
+    ) {
         when (requestCode) {
             REQUEST_CODE_USER_LOCATION_PERMISSION -> {
                 if (grantResults.isNotEmpty() && grantResults.first() == PackageManager.PERMISSION_GRANTED) {
@@ -109,7 +123,11 @@ class MapsFragment : SupportMapFragment(), OnMapReadyCallback {
     companion object {
         const val USER_ITEM = "userItem"
         const val REQUEST_CODE_USER_LOCATION_PERMISSION = 1002
-        const val MAP_ZOOM = 17.0f
-        fun newInstance() = MapsFragment()
+        @JvmStatic
+        fun newInstance(bundle: Bundle?): MapsFragment {
+            var mapsFragment = MapsFragment()
+            mapsFragment.arguments = bundle
+            return mapsFragment
+        }
     }
 }

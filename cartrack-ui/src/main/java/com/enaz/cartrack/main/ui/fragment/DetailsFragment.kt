@@ -1,6 +1,7 @@
 package com.enaz.cartrack.main.ui.fragment
 
 import android.content.Context
+import android.os.Bundle
 import android.view.View
 import com.enaz.cartrack.main.client.model.UsersResponse
 import com.enaz.cartrack.main.common.fragment.BaseFragment
@@ -18,6 +19,7 @@ class DetailsFragment : BaseFragment<DetailsFragmentBinding, DetailsViewModel>()
     private var mUserItem: UsersResponse? = null
     private var listener: OnDetailsFragmentListener? = null
     private var mView: View? = null
+    private var isFromDetails = false
 
     @Inject
     override lateinit var viewModel: DetailsViewModel
@@ -31,7 +33,6 @@ class DetailsFragment : BaseFragment<DetailsFragmentBinding, DetailsViewModel>()
         updateDetails(mUserItem, mView)
 
         address_location_btn.setOnClickListener {
-            var isFromDetails = false
             if (mView == null) {
                 mView = it
                 isFromDetails = true
@@ -73,6 +74,11 @@ class DetailsFragment : BaseFragment<DetailsFragmentBinding, DetailsViewModel>()
     override fun onDetach() {
         super.onDetach()
         listener = null
+    }
+
+    override fun onResume() {
+        super.onResume()
+        if (isFromDetails) mView = null
     }
 
     interface OnDetailsFragmentListener {

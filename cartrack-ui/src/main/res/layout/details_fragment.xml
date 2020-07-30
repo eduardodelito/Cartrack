@@ -37,8 +37,7 @@
                     style="@style/AvenirHeavy.Black"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@{@string/item_name(detailsViewModel.user.name)}"
-                    android:textSize="@dimen/font25" />
+                    android:text="@{@string/item_name(detailsViewModel.user.name)}" />
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/details_user_name"
@@ -46,8 +45,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/margin5"
-                    android:text="@{@string/item_username(detailsViewModel.user.username)}"
-                    android:textSize="@dimen/font25" />
+                    android:text="@{@string/item_username(detailsViewModel.user.username)}" />
 
                 <View
                     android:layout_width="match_parent"
@@ -65,6 +63,7 @@
                     android:autoLink="all"
                     android:drawableLeft="@drawable/ic_baseline_email_24"
                     android:drawablePadding="@dimen/margin10"
+                    android:drawableTint="@color/colorPrimary"
                     android:inputType="textEmailAddress"
                     android:text="@{@string/item_email(detailsViewModel.user.email)}" />
 
@@ -122,17 +121,24 @@
                         android:layout_marginTop="@dimen/margin5"
                         android:text="@{@string/details_address_street(detailsViewModel.user.address.zipcode)}" />
 
-                    <androidx.appcompat.widget.AppCompatTextView
-                        android:id="@+id/address_location_btn"
-                        style="@style/AvenirHeavy.Black"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/margin5"
-                        android:drawableRight="@drawable/ic_baseline_location_on_24"
-                        android:drawablePadding="@dimen/margin10"
-                        android:text="@string/details_address_location_label" />
-
                 </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="@dimen/margin10"
+                    android:layout_marginBottom="@dimen/margin10"
+                    android:background="@color/colorPrimary" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/address_location_btn"
+                    style="@style/AvenirHeavy.Black"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawableRight="@drawable/ic_baseline_location_on_24"
+                    android:drawablePadding="@dimen/margin10"
+                    android:drawableTint="@color/colorPrimaryDark"
+                    android:text="@string/details_address_location_label" />
 
                 <View
                     android:layout_width="match_parent"
@@ -150,6 +156,7 @@
                     android:autoLink="all"
                     android:drawableLeft="@drawable/ic_baseline_contact_phone_24"
                     android:drawablePadding="@dimen/margin10"
+                    android:drawableTint="@color/colorPrimary"
                     android:inputType="phone"
                     android:text="@{@string/item_phone(detailsViewModel.user.phone)}" />
 
@@ -162,6 +169,7 @@
                     android:autoLink="all"
                     android:drawableLeft="@drawable/ic_baseline_web_24"
                     android:drawablePadding="@dimen/margin10"
+                    android:drawableTint="@color/colorPrimary"
                     android:text="@{@string/item_website(detailsViewModel.user.website)}" />
 
                 <View

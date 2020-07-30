@@ -3,6 +3,7 @@
     <dimen name="btn_corner_radius">10dp</dimen>
 
     <!--Margin-->
+    <dimen name="margin1">1dp</dimen>
     <dimen name="margin5">5dp</dimen>
     <dimen name="margin8">8dp</dimen>
     <dimen name="margin10">10dp</dimen>
@@ -24,7 +25,9 @@
     <dimen name="width0">0dp</dimen>
 
     <!--Font Size-->
+    <dimen name="font14">14sp</dimen>
     <dimen name="font15">15sp</dimen>
+    <dimen name="font16">16sp</dimen>
     <dimen name="font18">18sp</dimen>
     <dimen name="font20">20sp</dimen>
     <dimen name="font25">25sp</dimen>

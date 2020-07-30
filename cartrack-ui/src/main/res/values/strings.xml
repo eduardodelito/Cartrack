@@ -29,10 +29,12 @@
     <string name="details_address_suite">Suite : %1$s</string>
     <string name="details_address_city">City : %1$s</string>
     <string name="details_address_zip_code">Zip Code : %1$s</string>
-    <string name="details_address_location_label">Location</string>
+    <string name="details_address_location_label">Click Location</string>
 
     <string name="details_company_label">Company</string>
     <string name="details_company_name">Name : %1$s</string>
 
     <string name="item_country">%1$s %2$s</string>
+
+    <string name="map_address">Address: %1$s %2$s %3$s %4$s</string>
 </resources>

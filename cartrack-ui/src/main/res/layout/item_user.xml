@@ -48,6 +48,7 @@
                 android:autoLink="all"
                 android:drawableLeft="@drawable/ic_baseline_contact_phone_24"
                 android:drawablePadding="@dimen/margin10"
+                android:drawableTint="@color/colorPrimary"
                 android:inputType="phone"
                 android:text="@{usersResponse.phone}" />
 

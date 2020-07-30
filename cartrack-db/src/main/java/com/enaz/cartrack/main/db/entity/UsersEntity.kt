@@ -4,6 +4,8 @@ import androidx.room.ColumnInfo
 import androidx.room.Embedded
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import java.io.Serializable
+
 /**
  * Created by eduardo.delito on 7/27/20.
  */
@@ -35,13 +37,13 @@ data class Address(
     var city: String,
     var zipcode: String,
     @Embedded(prefix = "geo")
-    var geo: Geo)
+    var geo: Geo): Serializable
 
 data class Geo(
     var lat: String,
-    var lng: String)
+    var lng: String): Serializable
 
 data class Company(
     var name: String,
     var catchPhrase: String,
-    var bs: String)
+    var bs: String): Serializable

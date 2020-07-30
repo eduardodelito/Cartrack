@@ -1,95 +1,22 @@
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.appcompat.widget.LinearLayoutCompat
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:elevation="4dp"
-    android:paddingBottom="@dimen/margin8"
-    android:paddingLeft="@dimen/margin8"
-    android:paddingRight="@dimen/margin8">
+    android:gravity="center_vertical|center_horizontal"
+    android:orientation="vertical">
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tv_name"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:text="Alex"
+        android:id="@+id/map_name"
+        style="@style/AvenirHeavy.Medium"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/margin16"
-        android:textColor="@color/colorPrimary"
-        android:textSize="30sp" />
-
-    <ImageView
-        android:id="@+id/iv_phone"
-        app:layout_constraintHorizontal_chainStyle="packed"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toLeftOf="@+id/tv_phone"
-        app:layout_constraintTop_toBottomOf="@+id/tv_name"
-        android:layout_width="20dp"
-        android:layout_height="20dp"
-        android:layout_margin="@dimen/margin8"
-        android:src="@android:drawable/ic_menu_call"
-        android:tint="@color/colorPrimary" />
+        android:text="Testing" />
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tv_phone"
-        app:layout_constraintBottom_toBottomOf="@+id/iv_phone"
-        app:layout_constraintLeft_toRightOf="@+id/iv_phone"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/iv_phone"
-        tools:text="+65 91050252"
+        android:id="@+id/map_address"
+        style="@style/AvenirSmall.Black"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="@dimen/font15"
-        android:textStyle="italic" />
+        android:text="Testing" />
 
-    <ImageView
-        android:id="@+id/iv_email"
-        app:layout_constraintHorizontal_chainStyle="packed"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toLeftOf="@+id/tv_email"
-        app:layout_constraintTop_toBottomOf="@+id/tv_phone"
-        android:layout_width="20dp"
-        android:layout_height="20dp"
-        android:layout_margin="@dimen/margin8"
-        android:src="@android:drawable/ic_dialog_email"
-        android:tint="@color/colorPrimary" />
-
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tv_email"
-        tools:text="alex.example@yahoo.com"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/margin8"
-        android:textSize="@dimen/font15"
-        android:textStyle="italic"
-        app:layout_constraintBottom_toBottomOf="@id/iv_email"
-        app:layout_constraintLeft_toRightOf="@id/iv_email"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/iv_email"/>
-
-    <ImageView
-        android:id="@+id/iv_address"
-        app:layout_constraintHorizontal_chainStyle="packed"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toLeftOf="@+id/tv_address"
-        app:layout_constraintTop_toBottomOf="@+id/iv_email"
-        android:layout_width="20dp"
-        android:layout_height="20dp"
-        android:layout_margin="@dimen/margin8"
-        android:src="@android:drawable/ic_dialog_map"
-        android:tint="@color/colorPrimary" />
-
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tv_address"
-        tools:text="Blk 425, Sambawang Street 11, Singapore"
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/margin8"
-        android:textSize="@dimen/font15"
-        app:layout_constraintLeft_toRightOf="@id/iv_address"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/iv_email"/>
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.appcompat.widget.LinearLayoutCompat>
