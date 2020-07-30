@@ -127,7 +127,7 @@
             android:hint="@string/country"
             android:inputType="text"
             android:maxLength="@integer/max_length"
-            android:onTextChanged="@{(text, start, before, count) -> createAccountViewModel.onConfirmPasswordChanged(text)}"
+            android:onTextChanged="@{(text, start, before, count) -> createAccountViewModel.onCountryChanged(text)}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/confirm_password_field" />

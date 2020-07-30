@@ -27,6 +27,7 @@ class CreateAccountViewModel @Inject constructor(
     private var userName: String = EMPTY_STRING
     private var password: String = EMPTY_STRING
     private var confirmPassword: String = EMPTY_STRING
+    private var country: String = EMPTY_STRING
 
     private val createAccount = MediatorLiveData<CreateAccountViewState>()
     internal fun getLoadingLiveData(): LiveData<CreateAccountViewState> = createAccount
@@ -38,6 +39,7 @@ class CreateAccountViewModel @Inject constructor(
         fName: String, lName: String,
         user: String, pass: String
     ) {
+        println("$password==============$confirmPassword")
         if ((password == confirmPassword)) {
             createAccount.postValue(LoadingModel(true))
             launch {
@@ -123,8 +125,13 @@ class CreateAccountViewModel @Inject constructor(
         validate()
     }
 
+    fun onCountryChanged(text: CharSequence) {
+        country = text.toString()
+        validate()
+    }
+
     private fun validate() {
-        if (!firstName.isNullOrEmpty() && !lastName.isNullOrEmpty() &&
+        if (!firstName.isNullOrEmpty() && !lastName.isNullOrEmpty() && !country.isNullOrEmpty() &&
             userName.length >= 6 && password.length >= 6 &&
             confirmPassword.length >= 6
         ) {

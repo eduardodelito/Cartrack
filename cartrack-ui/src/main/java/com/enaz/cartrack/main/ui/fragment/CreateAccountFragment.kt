@@ -136,10 +136,15 @@ class CreateAccountFragment : BaseFragment<CreateAccountFragmentBinding, CreateA
 
     private fun enableView(enable: Boolean) {
         first_name_field.isEnabled = enable
+        first_name_field.isClickable = enable
         last_name_field.isEnabled = enable
+        last_name_field.isClickable = enable
         user_name_field.isEnabled = enable
+        user_name_field.isClickable = enable
         password_field.isEnabled = enable
+        password_field.isClickable = enable
         confirm_password_field.isEnabled = enable
+        confirm_password_field.isClickable = enable
     }
 
     override fun onAttach(context: Context) {
