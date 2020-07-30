@@ -38,24 +38,29 @@ This is based on the Guide to app architecture article with the androidx package
  [Debug Cartrack APK here!](https://drive.google.com/file/d/1hA7XYxQDYlB9W0Dh5Uf_0DDB8duc60yy/view?usp=sharing)
  
  <b>Mobile Phone: List Screen and Details Screen:</b><br />
- <img src="https://github.com/eduardodelito/Cartrack/blob/master/screenshot/Screenshot_20200730-160451_Cartrack.jpg" width="20%" />
+ <img src="https://github.com/eduardodelito/Cartrack/blob/master/screenshot-phone/Screenshot_20200730-160451_Cartrack.jpg" width="20%" />
  &nbsp;&nbsp;
- <img src="https://github.com/eduardodelito/Cartrack/blob/master/screenshot/Screenshot_20200730-160501_Cartrack.jpg" width="20%" />
+ <img src="https://github.com/eduardodelito/Cartrack/blob/master/screenshot-phone/Screenshot_20200730-160501_Cartrack.jpg" width="20%" />
  &nbsp;&nbsp;
- <img src="https://github.com/eduardodelito/Cartrack/blob/master/screenshot/Screenshot_20200730-160525_Cartrack.jpg" width="20%" />
+ <img src="https://github.com/eduardodelito/Cartrack/blob/master/screenshot-phone/Screenshot_20200730-160525_Cartrack.jpg" width="20%" />
  &nbsp;&nbsp;
- <img src="https://github.com/eduardodelito/Cartrack/blob/master/screenshot/Screenshot_20200730-160535_Cartrack.jpg" width="20%" />
+ <img src="https://github.com/eduardodelito/Cartrack/blob/master/screenshot-phone/Screenshot_20200730-160535_Cartrack.jpg" width="20%" />
  &nbsp;&nbsp;
- <img src="https://github.com/eduardodelito/Cartrack/blob/master/screenshot/Screenshot_20200730-160558_Cartrack.jpg" width="20%" />
+ <img src="https://github.com/eduardodelito/Cartrack/blob/master/screenshot-phone/Screenshot_20200730-160558_Cartrack.jpg" width="20%" />
  &nbsp;&nbsp;
- <img src="https://github.com/eduardodelito/Cartrack/blob/master/screenshot/Screenshot_20200730-160606_Cartrack.jpg" width="20%" />
+ <img src="https://github.com/eduardodelito/Cartrack/blob/master/screenshot-phone/Screenshot_20200730-160606_Cartrack.jpg" width="20%" />
  &nbsp;&nbsp;
- <img src="https://github.com/eduardodelito/Cartrack/blob/master/screenshot/Screenshot_20200730-160620_Cartrack.jpg" width="20%" />
+ <img src="https://github.com/eduardodelito/Cartrack/blob/master/screenshot-phone/Screenshot_20200730-160620_Cartrack.jpg" width="20%" />
   
  <br /><br />
  
  <b>Tablet: List and Details on single screen.</b><br />
-
+ <img src="https://github.com/eduardodelito/Cartrack/blob/master/screeshot-tablet/Screenshot_1596098924.png" width="30%" /> &nbsp;&nbsp;
+ <img src="https://github.com/eduardodelito/Cartrack/blob/master/screeshot-tablet/Screenshot_1596098935.png" width="30%" /> &nbsp;&nbsp;
+ <img src="https://github.com/eduardodelito/Cartrack/blob/master/screeshot-tablet/Screenshot_1596098939.png" width="30%" /> &nbsp;&nbsp;
+ <img src="https://github.com/eduardodelito/Cartrack/blob/master/screeshot-tablet/Screenshot_1596098958.png" width="30%" /> &nbsp;&nbsp;
+ <img src="https://github.com/eduardodelito/Cartrack/blob/master/screeshot-tablet/Screenshot_1596099019.png" width="30%" /> &nbsp;&nbsp;
+ <img src="https://github.com/eduardodelito/Cartrack/blob/master/screeshot-tablet/Screenshot_1596099043.png" width="30%" /> &nbsp;&nbsp;
  <br /><br />
  
  
