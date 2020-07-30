@@ -11,6 +11,8 @@ import okhttp3.OkHttpClient
 import javax.inject.Singleton
 
 /**
+ * Client Module
+ *
  * Created by eduardo.delito on 7/26/20.
  */
 @Module

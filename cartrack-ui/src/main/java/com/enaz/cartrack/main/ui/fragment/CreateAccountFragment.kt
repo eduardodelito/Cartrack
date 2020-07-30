@@ -71,10 +71,12 @@ class CreateAccountFragment : BaseFragment<CreateAccountFragmentBinding, CreateA
             is AccountExistModel -> {
                 loading_layout.setViewVisibility(false)
                 error_message.setViewVisibility(
-                    getString(
-                        state.message,
-                        user_name_field.text.toString()
-                    )
+                    state.message?.let {
+                        getString(
+                            it,
+                            user_name_field.text.toString()
+                        )
+                    }
                 )
             }
 

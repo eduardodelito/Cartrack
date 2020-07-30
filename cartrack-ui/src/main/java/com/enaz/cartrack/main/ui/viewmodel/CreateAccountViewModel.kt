@@ -54,13 +54,14 @@ class CreateAccountViewModel @Inject constructor(
         withContext(Dispatchers.IO) {
             try {
                 if (accountRepository.isUserExist(account.userName)) {
-                    createAccount.postValue(FailingModel(true))
                     createAccount.postValue(AccountExistModel(R.string.account_exist))
                 } else {
+                    createAccount.postValue(AccountExistModel(null))
                     createAccount.postValue(LoadingModel(false))
                     accountRepository.submit(account.modelToEntityAccount())
                 }
             } catch (e: Exception) {
+                createAccount.postValue(AccountExistModel(R.string.account_error))
                 createAccount.postValue(FailingModel(true))
             }
         }

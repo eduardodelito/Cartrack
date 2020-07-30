@@ -1,6 +1,8 @@
 package com.enaz.cartrack.main.client.model
 
 /**
+ * CountriesResponse data class
+ *
  * Created by eduardo.delito on 7/28/20.
  */
 data class CountriesResponse(

@@ -5,6 +5,8 @@ import com.enaz.cartrack.main.db.entity.Company
 import java.io.Serializable
 
 /**
+ * UsersResponse data class
+ *
  * Created by eduardo.delito on 7/27/20.
  */
 data class UsersResponse(
