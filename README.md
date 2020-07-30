@@ -38,7 +38,21 @@ This is based on the Guide to app architecture article with the androidx package
  [Released Movies APK here!](https://drive.google.com/file/d/16ETR09wJCFJnqjUCUG0lwll4iF3X43an/view?usp=sharing)
  
  <b>Mobile Phone: List Screen and Details Screen:</b><br />
-    <br /><br />
+ <img src="https://github.com/eduardodelito/Cartrack/blob/master/screenshot/Screenshot_20200730-160451_Cartrack.jpg" width="20%" />
+ &nbsp;&nbsp;
+ <img src="https://github.com/eduardodelito/Cartrack/blob/master/screenshot/Screenshot_20200730-160501_Cartrack.jpg" width="20%" />
+ &nbsp;&nbsp;
+ <img src="https://github.com/eduardodelito/Cartrack/blob/master/screenshot/Screenshot_20200730-160525_Cartrack.jpg" width="20%" />
+ &nbsp;&nbsp;
+ <img src="https://github.com/eduardodelito/Cartrack/blob/master/screenshot/Screenshot_20200730-160535_Cartrack.jpg" width="20%" />
+ &nbsp;&nbsp;
+ <img src="https://github.com/eduardodelito/Cartrack/blob/master/screenshot/Screenshot_20200730-160558_Cartrack.jpg" width="20%" />
+ &nbsp;&nbsp;
+ <img src="https://github.com/eduardodelito/Cartrack/blob/master/screenshot/Screenshot_20200730-160606_Cartrack.jpg" width="20%" />
+ &nbsp;&nbsp;
+ <img src="https://github.com/eduardodelito/Cartrack/blob/master/screenshot/Screenshot_20200730-160620_Cartrack.jpg" width="20%" />
+  
+ <br /><br />
  
  <b>Tablet: List and Details on single screen.</b><br />
 
