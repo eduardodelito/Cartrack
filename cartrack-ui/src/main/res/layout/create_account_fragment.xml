@@ -144,7 +144,8 @@
             android:visibility="gone"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/country_field" />
+            app:layout_constraintTop_toBottomOf="@+id/country_field"
+            android:text="Testing Testing"/>
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/submit_button"
@@ -152,7 +153,7 @@
             android:layout_width="match_parent"
             android:layout_height="@dimen/height50"
             android:layout_marginStart="@dimen/padding16"
-            android:layout_marginTop="@dimen/margin70"
+            android:layout_marginTop="@dimen/margin120"
             android:layout_marginEnd="@dimen/padding16"
             android:background="@color/disabledColorPrimary"
             android:enabled="false"

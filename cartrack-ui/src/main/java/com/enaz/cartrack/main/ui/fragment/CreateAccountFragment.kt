@@ -70,6 +70,7 @@ class CreateAccountFragment : BaseFragment<CreateAccountFragmentBinding, CreateA
 
             is AccountExistModel -> {
                 loading_layout.setViewVisibility(false)
+                enableView(true)
                 error_message.setViewVisibility(
                     state.message?.let {
                         getString(
