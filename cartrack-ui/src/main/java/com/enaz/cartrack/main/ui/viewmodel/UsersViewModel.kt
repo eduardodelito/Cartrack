@@ -5,6 +5,7 @@ import androidx.lifecycle.MediatorLiveData
 import com.enaz.cartrack.main.client.repository.UsersRepository
 import com.enaz.cartrack.main.common.viewmodel.BaseViewModel
 import com.enaz.cartrack.main.ui.mapper.userResponseModelToUsersResponse
+import com.enaz.cartrack.main.ui.model.ProgressLoading
 import com.enaz.cartrack.main.ui.model.UsersLoading
 import com.enaz.cartrack.main.ui.model.UsersViewState
 import kotlinx.coroutines.CoroutineScope
@@ -28,7 +29,7 @@ class UsersViewModel @Inject constructor(private var usersRepository: UsersRepos
     fun getUsers() = usersRepository.getUsers()
 
     fun loadUsers() {
-        users.postValue(UsersLoading(true))
+        users.postValue(ProgressLoading(true))
         launch {
             insertUsers()
         }
@@ -37,10 +38,12 @@ class UsersViewModel @Inject constructor(private var usersRepository: UsersRepos
     private suspend fun insertUsers() {
         withContext(Dispatchers.IO) {
             try {
+                users.postValue(ProgressLoading(false))
                 users.postValue(UsersLoading(false))
                 usersRepository.insertUsers(usersRepository.getUsersResponse().getUsersResponse().userResponseModelToUsersResponse())
             } catch (e: Exception) {
                 e.printStackTrace()
+                users.postValue(ProgressLoading(false))
                 users.postValue(UsersLoading(false))
             }
         }
@@ -50,6 +53,9 @@ class UsersViewModel @Inject constructor(private var usersRepository: UsersRepos
      * Refresh movie list from the lat search.
      */
     fun refresh() {
-        loadUsers()
+        users.postValue(UsersLoading(true))
+        launch {
+            insertUsers()
+        }
     }
 }

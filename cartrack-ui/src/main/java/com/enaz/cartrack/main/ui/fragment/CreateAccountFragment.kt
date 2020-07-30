@@ -57,6 +57,7 @@ class CreateAccountFragment : BaseFragment<CreateAccountFragmentBinding, CreateA
         when (state) {
             is LoadingModel -> {
                 loading_layout.setViewVisibility(state.isLoading)
+                enableView(state.isLoading)
                 if (!state.isLoading) {
                     hideKeyboard()
                     view?.let { listener?.submit(it) }
@@ -131,6 +132,14 @@ class CreateAccountFragment : BaseFragment<CreateAccountFragmentBinding, CreateA
 
     private fun updateCountryField(name: String?) {
         country_field.setText(name)
+    }
+
+    private fun enableView(enable: Boolean) {
+        first_name_field.isEnabled = enable
+        last_name_field.isEnabled = enable
+        user_name_field.isEnabled = enable
+        password_field.isEnabled = enable
+        confirm_password_field.isEnabled = enable
     }
 
     override fun onAttach(context: Context) {

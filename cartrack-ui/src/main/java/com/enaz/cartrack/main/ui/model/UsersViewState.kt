@@ -5,4 +5,4 @@ package com.enaz.cartrack.main.ui.model
  */
 sealed class UsersViewState
 class UsersLoading(var isLoading: Boolean): UsersViewState()
-//class ErrorLoading(var errorPair: Pair<Boolean, String>?): UsersViewState()
+class ProgressLoading(var isLoading: Boolean): UsersViewState()

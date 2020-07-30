@@ -9,10 +9,12 @@ import androidx.recyclerview.widget.RecyclerView
 import com.enaz.cartrack.main.client.model.UsersResponse
 import com.enaz.cartrack.main.common.fragment.BaseFragment
 import com.enaz.cartrack.main.common.util.reObserve
+import com.enaz.cartrack.main.common.util.setViewVisibility
 import com.enaz.cartrack.main.db.entity.UsersEntity
 import com.enaz.cartrack.main.ui.adapter.UsersAdapter
 import com.enaz.cartrack.main.ui.fragment.databinding.UsersFragmentBinding
 import com.enaz.cartrack.main.ui.mapper.entityModelToUsersResponse
+import com.enaz.cartrack.main.ui.model.ProgressLoading
 import com.enaz.cartrack.main.ui.model.UsersLoading
 import com.enaz.cartrack.main.ui.model.UsersViewState
 import com.enaz.cartrack.main.ui.viewmodel.UsersViewModel
@@ -83,6 +85,7 @@ class UsersFragment : BaseFragment<UsersFragmentBinding, UsersViewModel>(){
     private fun onUsersStateChanged(state: UsersViewState?) {
         when(state) {
             is UsersLoading -> swipe_to_refresh_view.isRefreshing = state.isLoading
+            is ProgressLoading -> progress_view.setViewVisibility(state.isLoading)
         }
     }
 
