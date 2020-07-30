@@ -11,7 +11,7 @@ This is based on the Guide to app architecture article with the androidx package
  * Progress bar while loading list.
  * Swipe screen to refresh list.
  * Details with (Name, User Name, Email, Address:(Street, Suite, City, Zip Code), Location: (Lat, Lng), Phone, Website, Company: (Name and details))
- * User map location (Display Name and Address)
+ * User google map location (Display Name and Address)
  
 # Dependency modules
  * buildSrc - Initialize all dependency libraries and versions.
@@ -30,6 +30,7 @@ This is based on the Guide to app architecture article with the androidx package
  * Retrofit - Networking
  * Dagger2 - For injection
  * Coroutine - For asynchronous
+ * Google Map API
  * Mockito - Unit Test(To Do)
  * Espresso - Unit Test(To Do)
  
