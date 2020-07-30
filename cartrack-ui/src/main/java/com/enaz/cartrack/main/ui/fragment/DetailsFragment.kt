@@ -36,7 +36,7 @@ class DetailsFragment : BaseFragment<DetailsFragmentBinding, DetailsViewModel>()
                 mView = it
                 isFromDetails = true
             }
-            mView?.let { it1 -> listener?.navigateToMapLocation(it1, isFromDetails) }
+            mView?.let { it1 -> listener?.navigateToMapLocation(it1, isFromDetails, mUserItem) }
         }
     }
 
@@ -76,7 +76,7 @@ class DetailsFragment : BaseFragment<DetailsFragmentBinding, DetailsViewModel>()
     }
 
     interface OnDetailsFragmentListener {
-        fun navigateToMapLocation(view: View, isFromDetails: Boolean)
+        fun navigateToMapLocation(view: View, isFromDetails: Boolean, user: UsersResponse?)
     }
 
     companion object {

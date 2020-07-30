@@ -59,16 +59,4 @@ abstract class UIBindingModule {
             target: DetailsFragment
         ) = ViewModelProvider(target, factory).get(DetailsViewModel::class.java)
     }
-
-    @ContributesAndroidInjector(modules = [InjectMapsModelModule::class])
-    abstract fun bindMapsFragment(): MapsFragment
-
-    @Module
-    class InjectMapsModelModule {
-        @Provides
-        internal fun provideMapsViewModel(
-            factory: ViewModelProvider.Factory,
-            target: MapsFragment
-        ) = ViewModelProvider(target, factory).get(MapsViewModel::class.java)
-    }
 }

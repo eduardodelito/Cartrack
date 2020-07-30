@@ -11,6 +11,7 @@ import dagger.android.support.DaggerAppCompatActivity
 class MainActivity : DaggerAppCompatActivity(), LoginFragment.OnLoginFragmentListener,
     CreateAccountFragment.OnCreateAccountFragment, UsersFragment.OnUsersFragment,
     DetailsFragment.OnDetailsFragmentListener, MapsFragment.OnMapsFragmentListener {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -43,13 +44,15 @@ class MainActivity : DaggerAppCompatActivity(), LoginFragment.OnLoginFragmentLis
         }
     }
 
-    override fun navigateToMapLocation(view: View, isFromDetails: Boolean) {
+    override fun navigateToMapLocation(view: View, isFromDetails: Boolean, user: UsersResponse?) {
+        val bundle = bundleOf(MapsFragment.USER_ITEM to user)
+
         val action = if (isFromDetails)
             DetailsFragmentDirections.actionDetailsFragmentToMapsFragment()
         else
             UsersFragmentDirections.actionUsersFragmentToMapsFragment()
 
-        view.findNavController().navigate(action)
+        view.findNavController().navigate(action.actionId, bundle)
     }
 
     override fun showDetails(isVisible: Boolean) {

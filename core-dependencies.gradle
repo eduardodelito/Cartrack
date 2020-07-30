@@ -52,6 +52,8 @@ dependencies {
     kapt Libs.Google.processor
     kapt Libs.Google.compiler
 
+    implementation Libs.Google.playServicesMaps
+
     implementation Libs.Database.roomRuntime
     kapt Libs.Database.roomCompiler
 

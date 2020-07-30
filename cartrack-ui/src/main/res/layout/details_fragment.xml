@@ -123,7 +123,7 @@
                         android:text="@{@string/details_address_street(detailsViewModel.user.address.zipcode)}" />
 
                     <androidx.appcompat.widget.AppCompatTextView
-                        android:id="@+id/address_location"
+                        android:id="@+id/address_location_btn"
                         style="@style/AvenirHeavy.Black"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"

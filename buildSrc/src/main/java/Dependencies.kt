@@ -27,6 +27,7 @@ object Versions {
     //Google
     const val dagger = "2.25.3"
     const val materialDesign = "1.2.0-alpha03"
+    const val play_services_maps = "17.0.0"
 
     //Retrofit
     const val retrofit = "2.6.0"
@@ -74,6 +75,7 @@ object Libs {
         const val androidSupport = "com.google.dagger:dagger-android-support:${Versions.dagger}"
         const val processor = "com.google.dagger:dagger-android-processor:${Versions.dagger}"
         const val compiler = "com.google.dagger:dagger-compiler:${Versions.dagger}"
+        const val playServicesMaps = "com.google.android.gms:play-services-maps:${Versions.play_services_maps}"
     }
 
     private object Database {

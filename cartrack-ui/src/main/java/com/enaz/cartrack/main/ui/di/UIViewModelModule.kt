@@ -38,10 +38,4 @@ class UIViewModelModule {
     @ViewModelKey(DetailsViewModel::class)
     fun provideDetailsViewModel(): ViewModel =
         DetailsViewModel()
-
-    @Provides
-    @IntoMap
-    @ViewModelKey(MapsViewModel::class)
-    fun provideMapsViewModel(): ViewModel =
-        MapsViewModel()
 }
