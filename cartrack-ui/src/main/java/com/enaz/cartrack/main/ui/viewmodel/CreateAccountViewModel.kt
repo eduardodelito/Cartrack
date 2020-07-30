@@ -39,7 +39,6 @@ class CreateAccountViewModel @Inject constructor(
         fName: String, lName: String,
         user: String, pass: String
     ) {
-        println("$password==============$confirmPassword")
         if ((password == confirmPassword)) {
             createAccount.postValue(LoadingModel(true))
             launch {

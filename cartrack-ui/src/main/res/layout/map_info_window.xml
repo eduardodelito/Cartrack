@@ -9,14 +9,12 @@
         android:id="@+id/map_name"
         style="@style/AvenirHeavy.Medium"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Testing" />
+        android:layout_height="wrap_content" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/map_address"
         style="@style/AvenirSmall.Black"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Testing" />
+        android:layout_height="wrap_content" />
 
 </androidx.appcompat.widget.LinearLayoutCompat>

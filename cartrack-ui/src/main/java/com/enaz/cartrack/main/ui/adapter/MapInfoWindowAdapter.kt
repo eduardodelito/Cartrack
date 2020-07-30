@@ -16,15 +16,13 @@ import com.google.android.gms.maps.model.Marker
 class MapInfoWindowAdapter (private val context: Context) : GoogleMap.InfoWindowAdapter {
     override fun getInfoContents(marker: Marker?): View? {
         val user = marker?.tag as? UsersResponse
-
         val view = (context as? Activity)?.layoutInflater?.inflate(R.layout.map_info_window, null)
         val mapName = view?.findViewById<AppCompatTextView>(R.id.map_name)
         val mapAddress = view?.findViewById<AppCompatTextView>(R.id.map_address)
         mapName?.text = user?.name
-        mapAddress?.text = view?.context?.getString(R.string.map_address, user?.address?.street, user?.address?.suite, user?.address?.city, user?.address?.zipcode)
-
+        mapAddress?.text = view?.context?.getString(R.string.map_address, user?.address?.street,
+            user?.address?.suite, user?.address?.city, user?.address?.zipcode)
         return view
     }
-
     override fun getInfoWindow(marker: Marker?): View?  = null
 }

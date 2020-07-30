@@ -56,7 +56,8 @@ class CreateAccountFragment : BaseFragment<CreateAccountFragmentBinding, CreateA
     private fun onLoadingStateChanged(state: CreateAccountViewState?) {
         when (state) {
             is LoadingModel -> {
-                enableView(state.isLoading)
+                loading_layout.setViewVisibility(state.isLoading)
+                enableView(!state.isLoading)
                 if (!state.isLoading) {
                     hideKeyboard()
                     view?.let { listener?.submit(it) }
@@ -100,7 +101,11 @@ class CreateAccountFragment : BaseFragment<CreateAccountFragmentBinding, CreateA
                 }
             }
 
-            is CountryLoadingModel -> loading_layout.setViewVisibility(state.isLoading)
+            is CountryLoadingModel -> {
+                enableView(!state.isLoading)
+                loading_layout.setViewVisibility(state.isLoading)
+            }
+
         }
     }
 
@@ -149,7 +154,6 @@ class CreateAccountFragment : BaseFragment<CreateAccountFragmentBinding, CreateA
         confirm_password_field.isFocusable = enable
         confirm_password_field.isFocusableInTouchMode = enable
         confirm_password_field.isCursorVisible = enable
-        loading_layout.setViewVisibility(enable)
     }
 
     override fun onAttach(context: Context) {
