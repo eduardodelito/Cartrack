@@ -40,6 +40,13 @@ class CreateAccountViewModel @Inject constructor(
     override val coroutineContext: CoroutineContext
         get() = Dispatchers.Main
 
+    /**
+     * Method to submit Account to insert to database.
+     * @param fName
+     * @param lName
+     * @param user
+     * @param pass
+     */
     fun submit(
         fName: String, lName: String,
         user: String, pass: String
@@ -55,6 +62,10 @@ class CreateAccountViewModel @Inject constructor(
         }
     }
 
+    /**
+     * Suspend method to inser account data into database.
+     * @param account data.
+     */
     private suspend fun insertAccount(account: Account) {
         withContext(Dispatchers.IO) {
             try {
@@ -72,6 +83,9 @@ class CreateAccountViewModel @Inject constructor(
         }
     }
 
+    /**
+     *  Method to load countries.
+     */
     fun loadCountries() {
         createAccount.postValue(CountryLoadingModel(true))
         launch {
@@ -79,6 +93,9 @@ class CreateAccountViewModel @Inject constructor(
         }
     }
 
+    /**
+     * Suspend method to insert loaded countries from service.
+     */
     private suspend fun insertCountries() {
         withContext(Dispatchers.IO) {
             try {
@@ -91,8 +108,14 @@ class CreateAccountViewModel @Inject constructor(
         }
     }
 
+    /**
+     * Load livedata countries from database.
+     */
     fun getCountries() = countriesRepository.getCountries()
 
+    /**
+     * Delete countries from database.
+     */
     fun deleteCountries() {
         launch {
             withContext(Dispatchers.IO) {
@@ -105,36 +128,64 @@ class CreateAccountViewModel @Inject constructor(
         }
     }
 
+    /**
+     * Textwatcher method for firstname.
+     * @param text
+     */
     fun onFirstNameChanged(text: CharSequence) {
         firstName = text.toString()
         validate()
     }
 
+    /**
+     * Textwatcher method for lastname.
+     * @param text
+     */
     fun onLastNameChanged(text: CharSequence) {
         lastName = text.toString()
         validate()
     }
 
+    /**
+     * Textwatcher method for username.
+     * @param text
+     */
     fun onUsernameChanged(text: CharSequence) {
         userName = text.toString()
         validate()
     }
 
+    /**
+     * Textwatcher method for password.
+     * @param text
+     */
     fun onPasswordChanged(text: CharSequence) {
         password = text.toString()
         validate()
     }
 
+    /**
+     * Textwatcher method for confirm password.
+     * @param text
+     */
     fun onConfirmPasswordChanged(text: CharSequence) {
         confirmPassword = text.toString()
         validate()
     }
 
+    /**
+     * Textwatcher method for country.
+     * @param text
+     */
     fun onCountryChanged(text: CharSequence) {
         country = text.toString()
         validate()
     }
 
+    /**
+     * Method to validate all text in the fields.
+     * @param text
+     */
     private fun validate() {
         if (!firstName.isNullOrEmpty() && !lastName.isNullOrEmpty() && !country.isNullOrEmpty() &&
             userName.length >= 6 && password.length >= 6 &&

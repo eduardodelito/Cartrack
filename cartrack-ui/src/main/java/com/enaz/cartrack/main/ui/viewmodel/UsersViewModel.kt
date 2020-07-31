@@ -33,6 +33,9 @@ class UsersViewModel @Inject constructor(private var usersRepository: UsersRepos
      */
     fun getUsers() = usersRepository.getUsers()
 
+    /**
+     * Method to load Users in list from API.
+     */
     fun loadUsers() {
         users.postValue(ProgressLoading(true))
         launch {
@@ -40,6 +43,9 @@ class UsersViewModel @Inject constructor(private var usersRepository: UsersRepos
         }
     }
 
+    /**
+     * Suspend insert method to load and insert users from API.
+     */
     private suspend fun insertUsers() {
         withContext(Dispatchers.IO) {
             try {
@@ -55,7 +61,7 @@ class UsersViewModel @Inject constructor(private var usersRepository: UsersRepos
     }
 
     /**
-     * Refresh movie list from the lat search.
+     * Refresh users list.
      */
     fun refresh() {
         users.postValue(UsersLoading(true))

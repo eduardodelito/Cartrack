@@ -32,16 +32,28 @@ class LoginViewModel @Inject constructor(private var accountRepository: AccountR
     private var userName: String = EMPTY_STRING
     private var password: String = EMPTY_STRING
 
+    /**
+     * Textwatcher method for username.
+     * @param text
+     */
     fun onUsernameTextChanged(text: CharSequence) {
         userName = text.toString()
         validate()
     }
 
+    /**
+     * Textwatcher method for password.
+     * @param text
+     */
     fun onPasswordTextChanged(text: CharSequence) {
         password = text.toString()
         validate()
     }
 
+    /**
+     * Method to validate all text in the fields.
+     * @param text
+     */
     private fun validate() {
         if (userName.length < 6 || password.length < 6) {
             login.postValue(LoginValidModel(false))
@@ -50,12 +62,23 @@ class LoginViewModel @Inject constructor(private var accountRepository: AccountR
         }
     }
 
+    /**
+     * Login method using username and password.
+     * @param userName
+     * @param password
+     */
     fun onLogin(userName: String, password: String) {
         launch {
             login(userName, password)
         }
     }
 
+    /**
+     * Suspend method to validate username and password into database,
+     * if exist continue to login if not return error message.
+     * @param userName
+     * @param password
+     */
     private suspend fun login(userName: String, password: String) {
         withContext(Dispatchers.IO) {
             try {

@@ -18,6 +18,10 @@ class DetailsViewModel : BaseViewModel() {
 
     var user: UsersResponse? = null
 
+    /**
+     * Details method.
+     * @param userItem data.
+     */
     fun details(userItem: UsersResponse?) {
         if (userItem != null)
             details.postValue(AvailableModel(true))
