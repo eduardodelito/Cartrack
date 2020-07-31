@@ -21,13 +21,17 @@ import com.enaz.cartrack.main.ui.viewmodel.UsersViewModel
 import kotlinx.android.synthetic.main.users_fragment.*
 import javax.inject.Inject
 
-
+/**
+ * Fragment class for display Users in list.
+ *
+ * Created by eduardo.delito on 7/27/20.
+ */
 class UsersFragment : BaseFragment<UsersFragmentBinding, UsersViewModel>(){
 
     @Inject
     override lateinit var viewModel: UsersViewModel
 
-    private var listener: OnUsersFragment? = null
+    private var listener: OnUsersFragmentListener? = null
 
     private lateinit var usersAdapter: UsersAdapter
 
@@ -35,6 +39,9 @@ class UsersFragment : BaseFragment<UsersFragmentBinding, UsersViewModel>(){
 
     override fun getBindingVariable() = BR.usersViewModel
 
+    /**
+     * Init UI views.
+     */
     override fun initViews() {
         listener?.showDetails(true)
         usersAdapter = UsersAdapter(object : UsersAdapter.OnUsersAdapterListener {
@@ -64,6 +71,9 @@ class UsersFragment : BaseFragment<UsersFragmentBinding, UsersViewModel>(){
         }
     }
 
+    /**
+     * Subscribe UI into view model.
+     */
     override fun subscribeUi() {
         with(viewModel) {
             reObserve(getUsers(), ::onUsersLoaded)
@@ -73,6 +83,10 @@ class UsersFragment : BaseFragment<UsersFragmentBinding, UsersViewModel>(){
         }
     }
 
+    /**
+     * Method to display Users in list.
+     * @param list data.
+     */
     private fun onUsersLoaded(list: List<UsersEntity>?) {
         list?.entityModelToUsersResponse()?.let {
             if (!it.isNullOrEmpty()) {
@@ -82,6 +96,10 @@ class UsersFragment : BaseFragment<UsersFragmentBinding, UsersViewModel>(){
         }
     }
 
+    /**
+     * Method state model to show/hide swipe and progress loading.
+     * @param state
+     */
     private fun onUsersStateChanged(state: UsersViewState?) {
         when(state) {
             is UsersLoading -> swipe_to_refresh_view.isRefreshing = state.isLoading
@@ -89,19 +107,28 @@ class UsersFragment : BaseFragment<UsersFragmentBinding, UsersViewModel>(){
         }
     }
 
+    /**
+     * Init OnUsersFragmentListener listener.
+     */
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        if (context is OnUsersFragment) {
+        if (context is OnUsersFragmentListener) {
             listener = context
         }
     }
 
+    /**
+     * Reset listener.
+     */
     override fun onDetach() {
         super.onDetach()
         listener = null
     }
 
-    interface OnUsersFragment {
+    /**
+     * Action listener interface.
+     */
+    interface OnUsersFragmentListener {
         fun navigateToDetails(view: View, usersResponse: UsersResponse)
 
         fun showDetails(isVisible: Boolean)

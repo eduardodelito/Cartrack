@@ -5,6 +5,8 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 
 /**
+ * CountriesEntity data class
+ *
  * Created by eduardo.delito on 7/28/20.
  */
 @Entity(tableName = "CountriesEntity")

@@ -10,6 +10,8 @@ import com.enaz.cartrack.main.ui.fragment.R
 import com.enaz.cartrack.main.ui.fragment.databinding.ItemUserBinding
 
 /**
+ * Adapter data binding class to display users in list.
+ *
  * Created by eduardo.delito on 7/27/20.
  */
 class UsersAdapter(private val listener: OnUsersAdapterListener) :

@@ -9,6 +9,8 @@ import com.enaz.cartrack.main.db.entity.AccountEntity
 import com.enaz.cartrack.main.db.entity.UsersEntity
 
 /**
+ * Account calls for insert/query data into the database.
+ *
  * Created by eduardo.delito on 7/26/20.
  */
 @Dao

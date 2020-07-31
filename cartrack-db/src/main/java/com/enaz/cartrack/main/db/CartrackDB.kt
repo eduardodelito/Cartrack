@@ -12,6 +12,8 @@ import com.enaz.cartrack.main.db.entity.CountriesEntity
 import com.enaz.cartrack.main.db.entity.UsersEntity
 
 /**
+ * Database class
+ *
  * Created by eduardo.delito on 7/26/20.
  */
 @Database(

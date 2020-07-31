@@ -8,6 +8,8 @@ import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 
 /**
+ * Object converter class
+ *
  * Created by eduardo.delito on 7/27/20.
  */
 class UsersConverter {

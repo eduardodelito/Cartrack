@@ -8,8 +8,13 @@ import com.enaz.cartrack.main.client.model.UsersResponse
 import com.enaz.cartrack.main.ui.fragment.*
 import dagger.android.support.DaggerAppCompatActivity
 
+/**
+ * MainActivity class loaded with navigation calls.
+ *
+ * Created by eduardo.delito on 7/26/20.
+ */
 class MainActivity : DaggerAppCompatActivity(), LoginFragment.OnLoginFragmentListener,
-    CreateAccountFragment.OnCreateAccountFragment, UsersFragment.OnUsersFragment,
+    CreateAccountFragment.OnCreateAccountFragmentListener, UsersFragment.OnUsersFragmentListener,
     DetailsFragment.OnDetailsFragmentListener, MapsFragment.OnMapsFragmentListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -17,33 +22,56 @@ class MainActivity : DaggerAppCompatActivity(), LoginFragment.OnLoginFragmentLis
         setContentView(R.layout.activity_main)
     }
 
+    /**
+     * Navigation for the Login authentication to display Users.
+     * @param view
+     */
     override fun onLogin(view: View) {
         val action = LoginFragmentDirections.actionLoginFragmentToUsersFragment()
         view.findNavController().navigate(action)
     }
 
+    /**
+     * Navigation from Login to Create Account.
+     * @param view
+     */
     override fun onCreateAccount(view: View) {
         val action = LoginFragmentDirections.actionLoginFragmentToCreateAccountFragment()
         view.findNavController().navigate(action)
     }
 
+    /**
+     * Navigation from Create Account to Users after the completed registration.
+     * @param view
+     */
     override fun submit(view: View) {
         val action = CreateAccountFragmentDirections.actionCreateAccountFragmentToUsersFragment()
         view.findNavController().navigate(action)
     }
 
-    override fun navigateToDetails(view: View, usersResponse: UsersResponse) {
+    /**
+     * Navigation from Users list to Details or update
+     * if using tablet.
+     * @param view
+     * @param user data
+     */
+    override fun navigateToDetails(view: View, user: UsersResponse) {
         val detailsFragment: DetailsFragment? =
             supportFragmentManager.findFragmentById(R.id.detailsFragment) as DetailsFragment?
         if (detailsFragment == null) {
-            val bundle = bundleOf(DetailsFragment.USER_ITEM to usersResponse)
+            val bundle = bundleOf(DetailsFragment.USER_ITEM to user)
             val action = UsersFragmentDirections.actionUsersFragmentToDetailsFragment()
             view.findNavController().navigate(action.actionId, bundle)
         } else {
-            detailsFragment.updateDetails(usersResponse, view)
+            detailsFragment.updateDetails(user, view)
         }
     }
 
+    /**
+     * Navigation from details to Map
+     * @param view
+     * @param user data
+     */
     override fun navigateToMapLocation(view: View, isFromDetails: Boolean, user: UsersResponse?) {
         val bundle = bundleOf(MapsFragment.USER_ITEM to user)
 
@@ -55,6 +83,10 @@ class MainActivity : DaggerAppCompatActivity(), LoginFragment.OnLoginFragmentLis
         view.findNavController().navigate(action.actionId, bundle)
     }
 
+    /**
+     * Show/Hide Details since covering master details with in one activity.
+     * @param isVisible true if tablet and displaying Users or false otherwise.
+     */
     override fun showDetails(isVisible: Boolean) {
         val detailsFragment: DetailsFragment? =
             supportFragmentManager.findFragmentById(R.id.detailsFragment) as DetailsFragment?
@@ -66,9 +98,14 @@ class MainActivity : DaggerAppCompatActivity(), LoginFragment.OnLoginFragmentLis
         }
     }
 
-    override fun loadFirstIndex(userItem: UsersResponse?, view: View) {
+    /**
+     * Load default Users first index to display details.
+     * @param user
+     * @param view
+     */
+    override fun loadFirstIndex(user: UsersResponse?, view: View) {
         (supportFragmentManager.findFragmentById(R.id.detailsFragment) as DetailsFragment?)?.updateDetails(
-            userItem,
+            user,
             view
         )
     }

@@ -16,6 +16,11 @@ import kotlinx.coroutines.withContext
 import javax.inject.Inject
 import kotlin.coroutines.CoroutineContext
 
+/**
+ * Login View model class.
+ *
+ * Created by eduardo.delito on 7/27/20.
+ */
 class LoginViewModel @Inject constructor(private var accountRepository: AccountRepository) :
     BaseViewModel(), CoroutineScope {
 

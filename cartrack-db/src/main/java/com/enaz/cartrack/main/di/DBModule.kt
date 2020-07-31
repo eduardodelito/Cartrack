@@ -11,6 +11,8 @@ import dagger.Provides
 import javax.inject.Singleton
 
 /**
+ * Database module class
+ *
  * Created by eduardo.delito on 7/26/20.
  */
 @Module

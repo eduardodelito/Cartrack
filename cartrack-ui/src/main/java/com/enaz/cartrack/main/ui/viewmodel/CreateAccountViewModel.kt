@@ -16,6 +16,11 @@ import kotlinx.coroutines.withContext
 import javax.inject.Inject
 import kotlin.coroutines.CoroutineContext
 
+/**
+ * Create Account View model class.
+ *
+ * Created by eduardo.delito on 7/27/20.
+ */
 class CreateAccountViewModel @Inject constructor(
     private val accountRepository: AccountRepository,
     private val countriesRepository: CountriesRepository

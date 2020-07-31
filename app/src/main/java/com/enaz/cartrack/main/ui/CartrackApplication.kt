@@ -7,6 +7,8 @@ import dagger.android.AndroidInjector
 import dagger.android.DaggerApplication
 
 /**
+ * Application class to initialized dagger.
+ *
  * Created by eduardo.delito on 7/26/20.
  */
 class CartrackApplication: DaggerApplication() {

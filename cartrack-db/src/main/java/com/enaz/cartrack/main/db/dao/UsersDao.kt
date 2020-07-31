@@ -8,6 +8,8 @@ import androidx.room.Query
 import com.enaz.cartrack.main.db.entity.UsersEntity
 
 /**
+ * Users calls for insert/query data into the database.
+ *
  * Created by eduardo.delito on 7/27/20.
  */
 @Dao

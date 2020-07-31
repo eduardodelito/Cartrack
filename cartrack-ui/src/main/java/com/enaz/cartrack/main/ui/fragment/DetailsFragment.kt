@@ -14,6 +14,11 @@ import com.enaz.cartrack.main.ui.viewmodel.DetailsViewModel
 import kotlinx.android.synthetic.main.details_fragment.*
 import javax.inject.Inject
 
+/**
+ * Fragment class for display user details.
+ *
+ * Created by eduardo.delito on 7/27/20.
+ */
 class DetailsFragment : BaseFragment<DetailsFragmentBinding, DetailsViewModel>() {
 
     private var mUserItem: UsersResponse? = null
@@ -28,6 +33,9 @@ class DetailsFragment : BaseFragment<DetailsFragmentBinding, DetailsViewModel>()
 
     override fun getBindingVariable() = BR.detailsViewModel
 
+    /**
+     * Init UI views.
+     */
     override fun initViews() {
         mUserItem = arguments?.getSerializable(USER_ITEM) as UsersResponse?
         updateDetails(mUserItem, mView)
@@ -41,18 +49,30 @@ class DetailsFragment : BaseFragment<DetailsFragmentBinding, DetailsViewModel>()
         }
     }
 
+    /**
+     * Subscribe UI into view model.
+     */
     override fun subscribeUi() {
         with(viewModel) {
             reObserve(getDetailsLiveData(), ::onDetailsStateChanged)
         }
     }
 
+    /**
+     * Method model state to show/hide details layout.
+     * @param state
+     */
     private fun onDetailsStateChanged(state: DetailsViewState?) {
         when(state) {
             is AvailableModel -> details_layout.setViewVisibility(state.isAvailable)
         }
     }
 
+    /**
+     * Method to update details when selecting item in the list.
+     * @param userItem data
+     * @param view
+     */
     fun updateDetails(userItem: UsersResponse?, view: View?) {
         with(viewModel) {
             user = userItem
@@ -64,6 +84,9 @@ class DetailsFragment : BaseFragment<DetailsFragmentBinding, DetailsViewModel>()
         getBinding().invalidateAll()
     }
 
+    /**
+     * Init OnDetailsFragmentListener listener.
+     */
     override fun onAttach(context: Context) {
         super.onAttach(context)
         if (context is OnDetailsFragmentListener) {
@@ -71,16 +94,25 @@ class DetailsFragment : BaseFragment<DetailsFragmentBinding, DetailsViewModel>()
         }
     }
 
+    /**
+     * Reset listener.
+     */
     override fun onDetach() {
         super.onDetach()
         listener = null
     }
 
+    /**
+     * Reset view.
+     */
     override fun onResume() {
         super.onResume()
         if (isFromDetails) mView = null
     }
 
+    /**
+     * Action listener interface.
+     */
     interface OnDetailsFragmentListener {
         fun navigateToMapLocation(view: View, isFromDetails: Boolean, user: UsersResponse?)
     }

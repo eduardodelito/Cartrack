@@ -5,6 +5,8 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 
 /**
+ * AccountEntity data class
+ *
  * Created by eduardo.delito on 7/26/20.
  */
 @Entity(tableName = "AccountEntity")

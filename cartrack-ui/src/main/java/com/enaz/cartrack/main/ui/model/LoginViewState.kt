@@ -1,6 +1,8 @@
 package com.enaz.cartrack.main.ui.model
 
 /**
+ * LoginViewState data model class.
+ *
  * Created by eduardo.delito on 7/26/20.
  */
 sealed class LoginViewState

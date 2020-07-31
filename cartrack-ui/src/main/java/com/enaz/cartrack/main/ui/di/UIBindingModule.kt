@@ -8,6 +8,8 @@ import dagger.Provides
 import dagger.android.ContributesAndroidInjector
 
 /**
+ * Module class to bind fragment with provide init of view model factory.
+ *
  * Created by eduardo.delito on 7/27/20.
  */
 @Module

@@ -15,6 +15,11 @@ import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 
+/**
+ * Fragment map class.
+ *
+ * Created by eduardo.delito on 7/29/20.
+ */
 class MapsFragment : SupportMapFragment(), OnMapReadyCallback {
 
     private var user: UsersResponse? = null
@@ -22,6 +27,9 @@ class MapsFragment : SupportMapFragment(), OnMapReadyCallback {
 
     private var listener: OnMapsFragmentListener? = null
 
+    /**
+     * Init user data, details visibility, init map.
+     */
     override fun onCreate(bundle: Bundle?) {
         super.onCreate(bundle)
         user = arguments?.getSerializable(USER_ITEM) as UsersResponse?
@@ -29,6 +37,9 @@ class MapsFragment : SupportMapFragment(), OnMapReadyCallback {
         getMapAsync(this)
     }
 
+    /**
+     * Load map.
+     */
     override fun onMapReady(googleMap: GoogleMap?) {
         mMap = googleMap
         if (activity?.let {
@@ -69,6 +80,9 @@ class MapsFragment : SupportMapFragment(), OnMapReadyCallback {
         }
     }
 
+    /**
+     * Validate permissions for the location.
+     */
     override fun onRequestPermissionsResult(
         requestCode: Int,
         permissions: Array<out String>,
@@ -104,6 +118,9 @@ class MapsFragment : SupportMapFragment(), OnMapReadyCallback {
         }
     }
 
+    /**
+     * Init OnMapsFragmentListener listener.
+     */
     override fun onAttach(context: Context) {
         super.onAttach(context)
         if (context is OnMapsFragmentListener) {
@@ -111,11 +128,17 @@ class MapsFragment : SupportMapFragment(), OnMapReadyCallback {
         }
     }
 
+    /**
+     * Reset listener.
+     */
     override fun onDetach() {
         super.onDetach()
         listener = null
     }
 
+    /**
+     * Action listener interface.
+     */
     interface OnMapsFragmentListener {
         fun showDetails(isVisible: Boolean)
     }

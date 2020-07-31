@@ -7,6 +7,8 @@ import androidx.room.PrimaryKey
 import java.io.Serializable
 
 /**
+ * UsersEntity data class
+ *
  * Created by eduardo.delito on 7/27/20.
  */
 @Entity(tableName = "UsersEntity")

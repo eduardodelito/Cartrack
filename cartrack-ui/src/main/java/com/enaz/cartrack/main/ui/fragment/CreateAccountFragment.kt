@@ -20,9 +20,14 @@ import com.google.android.material.bottomsheet.BottomSheetDialog
 import kotlinx.android.synthetic.main.create_account_fragment.*
 import javax.inject.Inject
 
+/**
+ * CreateAccount Fragment class UI for registering account.
+ *
+ * Created by eduardo.delito on 7/27/20.
+ */
 class CreateAccountFragment : BaseFragment<CreateAccountFragmentBinding, CreateAccountViewModel>() {
 
-    private var listener: OnCreateAccountFragment? = null
+    private var listener: OnCreateAccountFragmentListener? = null
     private var dialog: BottomSheetDialog? = null
 
     @Inject
@@ -32,6 +37,9 @@ class CreateAccountFragment : BaseFragment<CreateAccountFragmentBinding, CreateA
 
     override fun getBindingVariable() = BR.createAccountViewModel
 
+    /**
+     * Init UI views.
+     */
     override fun initViews() {
         listener?.showDetails(false)
         submit_button.setOnClickListener {
@@ -42,6 +50,9 @@ class CreateAccountFragment : BaseFragment<CreateAccountFragmentBinding, CreateA
         }
     }
 
+    /**
+     * Subscribe UI into view model.
+     */
     override fun subscribeUi() {
         with(viewModel) {
             reObserve(getLoadingLiveData(), ::onLoadingStateChanged)
@@ -53,6 +64,10 @@ class CreateAccountFragment : BaseFragment<CreateAccountFragmentBinding, CreateA
         }
     }
 
+    /**
+     * Method for the result state of creating account.
+     * @param state model
+     */
     private fun onLoadingStateChanged(state: CreateAccountViewState?) {
         when (state) {
             is LoadingModel -> {
@@ -112,6 +127,10 @@ class CreateAccountFragment : BaseFragment<CreateAccountFragmentBinding, CreateA
         }
     }
 
+    /**
+     * Method to display countries into dialog.
+     * @param list of countries
+     */
     private fun showBottomCountriesDialog(list: List<CountriesEntity>?) {
         if (!list.isNullOrEmpty()) {
             dialog?.dismiss()
@@ -137,10 +156,18 @@ class CreateAccountFragment : BaseFragment<CreateAccountFragmentBinding, CreateA
         }
     }
 
+    /**
+     * Update selected country.
+     * @param name of country.
+     */
     private fun updateCountryField(name: String?) {
         country_field.setText(name)
     }
 
+    /**
+     * Enable/Disable fields when progress dialog is showing/Not showing.
+     * @param enable true/false.
+     */
     private fun enableView(enable: Boolean) {
         first_name_field.isFocusable = enable
         first_name_field.isFocusableInTouchMode = enable
@@ -159,20 +186,29 @@ class CreateAccountFragment : BaseFragment<CreateAccountFragmentBinding, CreateA
         confirm_password_field.isCursorVisible = enable
     }
 
+    /**
+     * Init OnCreateAccountFragment listener.
+     */
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        if (context is OnCreateAccountFragment) {
+        if (context is OnCreateAccountFragmentListener) {
             listener = context
         }
     }
 
+    /**
+     * Reset listener and clear countries.
+     */
     override fun onDetach() {
         super.onDetach()
         listener = null
         viewModel.deleteCountries()
     }
 
-    interface OnCreateAccountFragment {
+    /**
+     * Action listener interface.
+     */
+    interface OnCreateAccountFragmentListener {
         fun submit(view: View)
 
         fun showDetails(isVisible: Boolean)

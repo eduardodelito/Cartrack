@@ -7,6 +7,8 @@ import dagger.Binds
 import dagger.Module
 
 /**
+ * Class for binding the model factory with view model module.
+ *
  * Created by eduardo.delito on 7/26/20.
  */
 @Module(

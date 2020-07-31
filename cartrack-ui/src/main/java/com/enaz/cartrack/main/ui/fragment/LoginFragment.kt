@@ -16,6 +16,11 @@ import kotlinx.android.synthetic.main.create_account_fragment.*
 import kotlinx.android.synthetic.main.login_fragment.*
 import javax.inject.Inject
 
+/**
+ * Fragment class to validate authentication.
+ *
+ * Created by eduardo.delito on 7/27/20.
+ */
 class LoginFragment : BaseFragment<LoginFragmentBinding, LoginViewModel>() {
 
     @Inject
@@ -29,6 +34,9 @@ class LoginFragment : BaseFragment<LoginFragmentBinding, LoginViewModel>() {
     override fun getBindingVariable() =
         BR.loginViewModel
 
+    /**
+     * Init UI views.
+     */
     override fun initViews() {
         listener?.showDetails(false)
         login_button.setOnClickListener {
@@ -40,12 +48,19 @@ class LoginFragment : BaseFragment<LoginFragmentBinding, LoginViewModel>() {
         }
     }
 
+    /**
+     * Subscribe UI into view model.
+     */
     override fun subscribeUi() {
         with(viewModel) {
             reObserve(getLoginLiveData(), ::onLoginStateChanged)
         }
     }
 
+    /**
+     * Method to update enable/disable login button.
+     * @param state
+     */
     private fun onLoginStateChanged(state: LoginViewState?) {
         when (state) {
             is LoginValidModel -> {
@@ -75,12 +90,18 @@ class LoginFragment : BaseFragment<LoginFragmentBinding, LoginViewModel>() {
         }
     }
 
+    /**
+     * Reset fields.
+     */
     private fun clearFields() {
         editText_username.setText("")
         editText_password.setText("")
         login_error_message.visibility = View.GONE
     }
 
+    /**
+     * Init OnLoginFragmentListener listener.
+     */
     override fun onAttach(context: Context) {
         super.onAttach(context)
         if (context is OnLoginFragmentListener) {
@@ -88,11 +109,17 @@ class LoginFragment : BaseFragment<LoginFragmentBinding, LoginViewModel>() {
         }
     }
 
+    /**
+     * Reset listener.
+     */
     override fun onDetach() {
         super.onDetach()
         listener = null
     }
 
+    /**
+     * Action listener interface.
+     */
     interface OnLoginFragmentListener {
         fun onLogin(view: View)
 

@@ -11,6 +11,8 @@ import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.model.Marker
 
 /**
+ * Adapter class for displaying the marker information.
+ *
  * Created by eduardo.delito on 7/30/20.
  */
 class MapInfoWindowAdapter (private val context: Context) : GoogleMap.InfoWindowAdapter {

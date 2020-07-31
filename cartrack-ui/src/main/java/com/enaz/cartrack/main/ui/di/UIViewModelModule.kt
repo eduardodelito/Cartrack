@@ -11,6 +11,8 @@ import dagger.Provides
 import dagger.multibindings.IntoMap
 
 /**
+ * Module class with provide view model.
+ *
  * Created by eduardo.delito on 7/27/20.
  */
 @Module

@@ -15,6 +15,11 @@ import kotlinx.coroutines.withContext
 import javax.inject.Inject
 import kotlin.coroutines.CoroutineContext
 
+/**
+ * Users View model class.
+ *
+ * Created by eduardo.delito on 7/27/20.
+ */
 class UsersViewModel @Inject constructor(private var usersRepository: UsersRepository) :
     BaseViewModel(), CoroutineScope {
     override val coroutineContext: CoroutineContext

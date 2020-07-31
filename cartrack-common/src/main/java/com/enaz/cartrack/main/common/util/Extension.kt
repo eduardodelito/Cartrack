@@ -8,6 +8,8 @@ import androidx.appcompat.widget.AppCompatTextView
 import androidx.fragment.app.Fragment
 
 /**
+ * Extension file
+ *
  * Created by eduardo.delito on 7/26/20.
  */
 fun View.setViewVisibility(isVisible: Boolean) {
@@ -29,14 +31,23 @@ fun AppCompatTextView.setViewVisibility(message: String?) {
     }
 }
 
+/**
+ * Hide Keyboard in the Fragment.
+ */
 fun Fragment.hideKeyboard() {
     view?.let { activity?.hideKeyboard(it) }
 }
 
+/**
+ * Hide Keyboard in the Activity.
+ */
 fun Activity.hideKeyboard() {
     hideKeyboard(currentFocus ?: View(this))
 }
 
+/**
+ * Hide keyboard method.
+ */
 fun Context.hideKeyboard(view: View) {
     val inputMethodManager = getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
     inputMethodManager.hideSoftInputFromWindow(view.windowToken, 0)

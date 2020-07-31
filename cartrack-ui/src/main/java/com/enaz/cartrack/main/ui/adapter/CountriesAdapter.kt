@@ -10,7 +10,7 @@ import com.enaz.cartrack.main.ui.fragment.R
 import com.enaz.cartrack.main.ui.fragment.databinding.ItemCountryBinding
 
 /**
- * Adapter class to get all countries.
+ * Adapter data binding class to display all countries.
  *
  * Source API: https://restcountries.eu/#api-endpoints-all
  *

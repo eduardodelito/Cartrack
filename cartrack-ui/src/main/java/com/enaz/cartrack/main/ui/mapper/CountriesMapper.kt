@@ -4,6 +4,8 @@ import com.enaz.cartrack.main.client.model.CountriesResponse
 import com.enaz.cartrack.main.db.entity.CountriesEntity
 
 /**
+ * Countries model mapper.
+ *
  * Created by eduardo.delito on 7/28/20.
  */
 

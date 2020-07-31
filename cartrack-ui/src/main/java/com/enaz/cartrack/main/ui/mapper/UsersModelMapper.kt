@@ -4,6 +4,8 @@ import com.enaz.cartrack.main.client.model.UsersResponse
 import com.enaz.cartrack.main.db.entity.UsersEntity
 
 /**
+ * Users model mapper.
+ *
  * Created by eduardo.delito on 7/27/20.
  */
 fun List<UsersResponse>.userResponseModelToUsersResponse() : List<UsersEntity> {
