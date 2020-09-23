@@ -1,8 +1,6 @@
 package com.enaz.cartrack.main.client.repository
 
-import com.enaz.cartrack.main.client.CartrackApiClient
 import com.enaz.cartrack.main.db.dao.AccountDao
-import com.enaz.cartrack.main.db.dao.UsersDao
 import com.enaz.cartrack.main.db.entity.AccountEntity
 
 /**

@@ -16,7 +16,6 @@ class CartrackApplication: DaggerApplication() {
      * Dagger injection for all modules.
      */
     override fun applicationInjector(): AndroidInjector<out DaggerApplication> {
-        val context = applicationContext
         return DaggerCartrackComponent
             .builder()
             .application(this)

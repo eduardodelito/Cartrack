@@ -53,17 +53,17 @@ class MainActivity : DaggerAppCompatActivity(), LoginFragment.OnLoginFragmentLis
      * Navigation from Users list to Details or update
      * if using tablet.
      * @param view
-     * @param user data
+     * @param usersResponse data
      */
-    override fun navigateToDetails(view: View, user: UsersResponse) {
+    override fun navigateToDetails(view: View, usersResponse: UsersResponse) {
         val detailsFragment: DetailsFragment? =
             supportFragmentManager.findFragmentById(R.id.detailsFragment) as DetailsFragment?
         if (detailsFragment == null) {
-            val bundle = bundleOf(DetailsFragment.USER_ITEM to user)
+            val bundle = bundleOf(DetailsFragment.USER_ITEM to usersResponse)
             val action = UsersFragmentDirections.actionUsersFragmentToDetailsFragment()
             view.findNavController().navigate(action.actionId, bundle)
         } else {
-            detailsFragment.updateDetails(user, view)
+            detailsFragment.updateDetails(usersResponse, view)
         }
     }
 
@@ -92,20 +92,20 @@ class MainActivity : DaggerAppCompatActivity(), LoginFragment.OnLoginFragmentLis
             supportFragmentManager.findFragmentById(R.id.detailsFragment) as DetailsFragment?
         if (detailsFragment != null) {
             if (isVisible)
-                detailsFragment?.view?.visibility = View.VISIBLE
+                detailsFragment.view?.visibility = View.VISIBLE
             else
-                detailsFragment?.view?.visibility = View.GONE
+                detailsFragment.view?.visibility = View.GONE
         }
     }
 
     /**
      * Load default Users first index to display details.
-     * @param user
+     * @param userItem
      * @param view
      */
-    override fun loadFirstIndex(user: UsersResponse?, view: View) {
+    override fun loadFirstIndex(userItem: UsersResponse?, view: View) {
         (supportFragmentManager.findFragmentById(R.id.detailsFragment) as DetailsFragment?)?.updateDetails(
-            user,
+            userItem,
             view
         )
     }
